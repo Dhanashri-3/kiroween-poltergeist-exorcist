@@ -40,7 +40,7 @@ Steering constraints that apply to every task:
     - _Requirements: 13.8, 15.11, 18.4, 20.2_
 
 - [ ] 2. Isolated Test_App and configuration
-  - [ ] 2.1 Build the Test_App in `testapp/`
+  - [x] 2.1 Build the Test_App in `testapp/`
     - Create a small web app bound only to 127.0.0.1 with four designated components: a button, a layout section, a data panel loading from a local mock API, and a styled card
     - Add a `/health` endpoint returning HTTP 200 and JSON with the status of each component, based on real checks of the component behavior
     - Make no requests to external hosts

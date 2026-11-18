@@ -1,0 +1,16 @@
+.card {
+  background: #ffffff;
+  border: 1px solid #d5d0e8;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.card-title {
+  margin: 0 0 8px;
+  color: #4b3b8f;
+}
+
+.card-body {
+  margin: 0;
+}

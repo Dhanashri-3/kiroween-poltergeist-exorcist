@@ -24,6 +24,18 @@
         "chatSessionId": "sess_3a20c0df-a1d2-478c-be0f-f9a280d3f6e2",
         "timestamp": 1795008072377
       }
+    ],
+    "2.1 Build the Test_App in `testapp/`": [
+      {
+        "executionId": "bb8b9e27-3e23-455e-b072-4d35ba4be18a",
+        "chatSessionId": "sess_865e9ff5-7126-462b-bf2a-00771a775077",
+        "timestamp": 1795011366677
+      },
+      {
+        "executionId": "bb8b9e27-3e23-455e-b072-4d35ba4be18a",
+        "chatSessionId": "sess_865e9ff5-7126-462b-bf2a-00771a775077",
+        "timestamp": 1795011848815
+      }
     ]
   }
 }

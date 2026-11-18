@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f4f2fa;
+  color: #222;
+}
+
+.layout-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+.layout-section > section {
+  padding: 8px;
+}
