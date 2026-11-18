@@ -20,5 +20,5 @@ No dependency is installed until it is listed here and approved by the team. App
 | Vitest | Install during Task 1.2| Approved | |
 | Playwright | Browser-based detection and verification of UI failures | Pending team approval | |
 | fast-check | Property-based testing | Approved, install deferred | Install in task 3.2 (first property test task executed) |
-| Ajv | JSON schema validation for events, diagnoses, repair plans and scenario catalog | Approved, install deferred | Install in task 1.3 |
+| Ajv | JSON schema validation for events, diagnoses, repair plans and scenario catalog | Approved, installed | Installed in `backend/` in task 1.3 as `ajv@^8.20.0` (resolved 8.20.0). `ajv-formats` was not added; date-time and UUID checks use patterns |
 | Open AI model SDK | Model access for Exorcist diagnosis and repair generation | Open decision | Provider not chosen |

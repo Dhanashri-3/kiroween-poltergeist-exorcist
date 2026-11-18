@@ -27,7 +27,7 @@ Steering constraints that apply to every task:
     - Add a Vitest configuration limited to `backend/`
     - _Requirements: 13.8, 18.1, 20.1_
 
-  - [ ] 1.3 Define JSON Schema contracts and install Ajv
+  - [x] 1.3 Define JSON Schema contracts and install Ajv
     - Install Ajv in `backend/` (already approved; record the install in the dependency review)
     - Create schemas in `backend/src/contracts/` for Event, Incident, Evidence, Diagnosis, Repair_Plan, Scenario_Catalog entry, Snapshot, Verification_Result, Action_Allowlist, Fallback_Mapping entry and Command template
     - Export a `validate(schemaName, value)` helper that returns structured errors

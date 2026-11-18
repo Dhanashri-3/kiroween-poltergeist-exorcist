@@ -1,0 +1,26 @@
+export const diagnosisSchema = {
+  $id: 'https://poltergeist-exorcist.local/contracts/diagnosis.json',
+  title: 'Diagnosis',
+  type: 'object',
+  additionalProperties: false,
+  required: [
+    'incidentId',
+    'component',
+    'suspectedFile',
+    'location',
+    'rootCause',
+    'confidence',
+    'evidenceUsed',
+    'status',
+  ],
+  properties: {
+    incidentId: { $ref: 'common.json#/$defs/nonEmptyString' },
+    component: { $ref: 'common.json#/$defs/nonEmptyString' },
+    suspectedFile: { $ref: 'common.json#/$defs/nonEmptyString' },
+    location: { $ref: 'common.json#/$defs/nonEmptyString' },
+    rootCause: { $ref: 'common.json#/$defs/nonEmptyString' },
+    confidence: { type: 'number', minimum: 0, maximum: 1 },
+    evidenceUsed: { $ref: 'common.json#/$defs/stringArray' },
+    status: { type: 'string', enum: ['ok', 'inconclusive', 'rule_based'] },
+  },
+};

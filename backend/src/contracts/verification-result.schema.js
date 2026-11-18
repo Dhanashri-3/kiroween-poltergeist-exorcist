@@ -1,0 +1,40 @@
+export const verificationResultSchema = {
+  $id: 'https://poltergeist-exorcist.local/contracts/verification-result.json',
+  title: 'Verification_Result',
+  type: 'object',
+  additionalProperties: false,
+  required: [
+    'verificationId',
+    'incidentId',
+    'attemptNo',
+    'checks',
+    'originalFailingCheckRan',
+    'overall',
+    'startedAt',
+    'durationMs',
+  ],
+  properties: {
+    verificationId: { $ref: 'common.json#/$defs/nonEmptyString' },
+    incidentId: { $ref: 'common.json#/$defs/nonEmptyString' },
+    attemptNo: { type: 'integer', minimum: 1 },
+    checks: {
+      type: 'array',
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        required: ['checkId', 'kind', 'coversComponent', 'outcome', 'rawOutputRef'],
+        properties: {
+          checkId: { $ref: 'common.json#/$defs/nonEmptyString' },
+          kind: { type: 'string', enum: ['health', 'vitest', 'playwright'] },
+          coversComponent: { $ref: 'common.json#/$defs/nonEmptyString' },
+          outcome: { type: 'string', enum: ['pass', 'fail', 'error', 'timeout'] },
+          rawOutputRef: { $ref: 'common.json#/$defs/nonEmptyString' },
+        },
+      },
+    },
+    originalFailingCheckRan: { type: 'boolean' },
+    overall: { type: 'string', enum: ['pass', 'fail'] },
+    startedAt: { $ref: 'common.json#/$defs/isoTimestamp' },
+    durationMs: { $ref: 'common.json#/$defs/nonNegativeInteger' },
+  },
+};

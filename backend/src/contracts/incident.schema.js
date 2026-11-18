@@ -1,0 +1,50 @@
+export const incidentSchema = {
+  $id: 'https://poltergeist-exorcist.local/contracts/incident.json',
+  title: 'Incident',
+  type: 'object',
+  additionalProperties: false,
+  required: [
+    'incidentId',
+    'state',
+    'detectedAt',
+    'component',
+    'evidenceRefs',
+    'plans',
+    'gateDecisions',
+    'attempts',
+    'attemptCount',
+    'needsRollbackVerification',
+    'updatedAt',
+  ],
+  properties: {
+    incidentId: { $ref: 'common.json#/$defs/nonEmptyString' },
+    state: { $ref: 'common.json#/$defs/incidentState' },
+    detectedAt: { $ref: 'common.json#/$defs/isoTimestamp' },
+    component: { $ref: 'common.json#/$defs/nonEmptyString' },
+    evidenceRefs: { $ref: 'common.json#/$defs/stringArray' },
+    diagnosis: { $ref: 'diagnosis.json' },
+    plans: { type: 'array', items: { $ref: 'repair-plan.json' } },
+    // Safety_Gate decision shape is defined by the gate module; here each must be an object.
+    gateDecisions: { type: 'array', items: { type: 'object' } },
+    attempts: {
+      type: 'array',
+      items: {
+        type: 'object',
+        additionalProperties: false,
+        required: ['attemptNo', 'planHash', 'snapshotId', 'outcome'],
+        properties: {
+          attemptNo: { type: 'integer', minimum: 1 },
+          planHash: { $ref: 'common.json#/$defs/nonEmptyString' },
+          snapshotId: { $ref: 'common.json#/$defs/nonEmptyString' },
+          verificationId: { $ref: 'common.json#/$defs/nonEmptyString' },
+          // The design does not enumerate attempt outcomes.
+          outcome: { $ref: 'common.json#/$defs/nonEmptyString' },
+        },
+      },
+    },
+    attemptCount: { $ref: 'common.json#/$defs/nonNegativeInteger' },
+    needsRollbackVerification: { type: 'boolean' },
+    updatedAt: { $ref: 'common.json#/$defs/isoTimestamp' },
+    terminalReason: { $ref: 'common.json#/$defs/nonEmptyString' },
+  },
+};
