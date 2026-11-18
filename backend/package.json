@@ -1,0 +1,16 @@
+{
+  "name": "poltergeist-exorcist-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Backend orchestration for the Poltergeist vs. Exorcist self-healing system",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8"
+  }
+}
