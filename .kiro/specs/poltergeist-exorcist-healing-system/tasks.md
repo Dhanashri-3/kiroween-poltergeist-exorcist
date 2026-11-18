@@ -14,7 +14,7 @@ Steering constraints that apply to every task:
 
 ## Tasks
 
-- [ ] 1. Governance, scaffolding and contracts
+- [x] 1. Governance, scaffolding and contracts
   - [x] 1.1 Create the dependency review document and docs skeleton
     - Create `docs/dependency-review.md` listing Node.js, Express, React, Vite, Vitest, Playwright, fast-check, Ajv and the open AI model SDK, each with purpose and status (fast-check and Ajv approved, install deferred)
     - Create empty placeholders `docs/api.md`, `docs/event-schema.md`, `docs/diagnosis-schema.md`, `docs/repair-plan-schema.md`, `docs/scenario-catalog-schema.md` with headings only
@@ -34,7 +34,7 @@ Steering constraints that apply to every task:
     - Mirror the field lists from the design Data Models section into `docs/event-schema.md`, `docs/diagnosis-schema.md`, `docs/repair-plan-schema.md`, `docs/scenario-catalog-schema.md`
     - _Requirements: 7.2, 8.1, 14.1, 20.3_
 
-  - [ ] 1.4 Add the module import-boundary check
+  - [x] 1.4 Add the module import-boundary check
     - Create a Vitest test that scans sources and fails if `backend/src/poltergeist/` imports `exorcist/`, if `backend/src/exorcist/` imports `poltergeist/`, if either imports anything other than `contracts/`, or if `frontend/` imports from `backend/`
     - Fail also if any agent module imports the local JSON storage implementation directly
     - _Requirements: 13.8, 15.11, 18.4, 20.2_
