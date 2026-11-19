@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "templates": [
+    {
+      "templateId": "Health_Check",
+      "executable": "node",
+      "args": [
+        "-e",
+        "const A=['button','layout','dataPanel','card'];const c=process.argv[1];const die=(m,k)=>{console.error(m);process.exit(k||1)};const isO=v=>v!==null&&typeof v==='object'&&!Array.isArray(v);(async()=>{if(c!==undefined&&!A.includes(c))return die('unknown component: '+c);const r=await fetch('http://127.0.0.1:4100/health',{signal:AbortSignal.timeout(5000)});if(r.status!==200||r.ok!==true)return die('HTTP status '+r.status);const b=await r.json();if(!isO(b))return die('invalid body');if(b.status!==undefined&&b.status!=='ok')return die('overall status is '+String(b.status));const m=b.components;if(!isO(m))return die('components missing');for(const k of A)if(!Object.hasOwn(m,k))return die('component missing: '+k);const t=c===undefined?A:[c];const bad=t.filter(k=>!isO(m[k])||m[k].status!=='ok');if(bad.length)return die('unhealthy: '+bad.join(','));console.log('ok')})().catch(e=>die(String(e&&e.message||e),2))"
+      ],
+      "allowedParams": [
+        "button",
+        "layout",
+        "dataPanel",
+        "card"
+      ],
+      "timeoutMs": 10000
+    },
+    {
+      "templateId": "Vitest",
+      "executable": "node",
+      "args": [
+        "backend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--root",
+        "testapp"
+      ],
+      "allowedParams": [
+        "button",
+        "layout",
+        "dataPanel",
+        "card"
+      ],
+      "timeoutMs": 60000
+    },
+    {
+      "templateId": "Playwright",
+      "executable": "node",
+      "args": [
+        "testapp/node_modules/@playwright/test/cli.js",
+        "test",
+        "--config",
+        "testapp/playwright.config.js"
+      ],
+      "allowedParams": [
+        "button",
+        "layout",
+        "dataPanel",
+        "card"
+      ],
+      "timeoutMs": 90000
+    }
+  ]
+}

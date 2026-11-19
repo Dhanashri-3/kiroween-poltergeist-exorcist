@@ -1,0 +1,149 @@
+{
+  "version": "1.0.0",
+  "scenarios": [
+    {
+      "scenarioId": "button-failure",
+      "label": "Button failure",
+      "targetComponent": "button",
+      "severity": "high",
+      "targetFiles": ["public/button.js"],
+      "injection": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "public/button.js", "find": "count = nextCount(count);", "replace": "count = count;" }
+        ]
+      },
+      "reversal": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "public/button.js", "find": "count = count;", "replace": "count = nextCount(count);" }
+        ]
+      },
+      "expectedRepairAction": {
+        "actionType": "replace_text",
+        "targetFile": "public/button.js",
+        "change": { "find": "count = count;", "replace": "count = nextCount(count);" }
+      }
+    },
+    {
+      "scenarioId": "layout-corruption",
+      "label": "Layout corruption",
+      "targetComponent": "layout",
+      "severity": "medium",
+      "targetFiles": ["public/layout.css"],
+      "injection": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "public/layout.css", "find": "display: grid;", "replace": "display: inline;" }
+        ]
+      },
+      "reversal": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "public/layout.css", "find": "display: inline;", "replace": "display: grid;" }
+        ]
+      },
+      "expectedRepairAction": {
+        "actionType": "replace_style_rule",
+        "targetFile": "public/layout.css",
+        "change": { "find": "display: inline;", "replace": "display: grid;" }
+      }
+    },
+    {
+      "scenarioId": "component-disappearance",
+      "label": "Component disappearance",
+      "targetComponent": "card",
+      "severity": "high",
+      "targetFiles": ["public/card.css"],
+      "injection": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "public/card.css", "find": "background: #ffffff;", "replace": "background: #ffffff; display: none;" }
+        ]
+      },
+      "reversal": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "public/card.css", "find": "background: #ffffff; display: none;", "replace": "background: #ffffff;" }
+        ]
+      },
+      "expectedRepairAction": {
+        "actionType": "replace_style_rule",
+        "targetFile": "public/card.css",
+        "change": { "find": " display: none;", "replace": "" }
+      }
+    },
+    {
+      "scenarioId": "api-failure",
+      "label": "API failure",
+      "targetComponent": "dataPanel",
+      "severity": "critical",
+      "targetFiles": ["mock-api.js"],
+      "injection": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "mock-api.js", "find": "res.writeHead(200,", "replace": "res.writeHead(500," }
+        ]
+      },
+      "reversal": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "mock-api.js", "find": "res.writeHead(500,", "replace": "res.writeHead(200," }
+        ]
+      },
+      "expectedRepairAction": {
+        "actionType": "replace_mock_api_handler",
+        "targetFile": "mock-api.js",
+        "change": { "find": "res.writeHead(500,", "replace": "res.writeHead(200," }
+      }
+    },
+    {
+      "scenarioId": "styling-failure",
+      "label": "Styling failure",
+      "targetComponent": "button",
+      "severity": "low",
+      "targetFiles": ["public/button.css"],
+      "injection": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "public/button.css", "find": "#test-button {", "replace": "#test-btn {" }
+        ]
+      },
+      "reversal": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "public/button.css", "find": "#test-btn {", "replace": "#test-button {" }
+        ]
+      },
+      "expectedRepairAction": {
+        "actionType": "replace_style_rule",
+        "targetFile": "public/button.css",
+        "change": { "find": "#test-btn {", "replace": "#test-button {" }
+      }
+    },
+    {
+      "scenarioId": "loading-failure",
+      "label": "Loading failure",
+      "targetComponent": "dataPanel",
+      "severity": "medium",
+      "targetFiles": ["public/data-panel.js"],
+      "injection": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "public/data-panel.js", "find": "var ENDPOINT = '/api/items';", "replace": "var ENDPOINT = '/api/itemz';" }
+        ]
+      },
+      "reversal": {
+        "type": "replace_text",
+        "steps": [
+          { "file": "public/data-panel.js", "find": "var ENDPOINT = '/api/itemz';", "replace": "var ENDPOINT = '/api/items';" }
+        ]
+      },
+      "expectedRepairAction": {
+        "actionType": "replace_text",
+        "targetFile": "public/data-panel.js",
+        "change": { "find": "var ENDPOINT = '/api/itemz';", "replace": "var ENDPOINT = '/api/items';" }
+      }
+    }
+  ]
+}

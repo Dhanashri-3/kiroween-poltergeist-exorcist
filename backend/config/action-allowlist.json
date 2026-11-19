@@ -1,0 +1,17 @@
+[
+  {
+    "actionType": "replace_text",
+    "allowedFiles": ["public/button.js", "public/card.js", "public/data-panel.js"],
+    "maxChangedLines": 20
+  },
+  {
+    "actionType": "replace_style_rule",
+    "allowedFiles": ["public/button.css", "public/card.css", "public/data-panel.css", "public/layout.css"],
+    "maxChangedLines": 20
+  },
+  {
+    "actionType": "replace_mock_api_handler",
+    "allowedFiles": ["mock-api.js"],
+    "maxChangedLines": 30
+  }
+]

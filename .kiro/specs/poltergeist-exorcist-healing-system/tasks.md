@@ -47,7 +47,7 @@ Steering constraints that apply to every task:
     - Use only dependencies from the approved list
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5_
 
-  - [ ] 2.2 Create the approved configuration files
+  - [x] 2.2 Create the approved configuration files
     - In `backend/config/`, create `approved-files.json` (paths relative to `testapp/`), `action-allowlist.json` (text replacement, style rule replacement, mock API handler replacement, each with allowed files and `maxChangedLines`), `scenario-catalog.json` (exactly the six scenarios with deterministic injection and reversal transforms), `command-templates.json` (Health_Check, Vitest and Playwright templates with fixed args and component enum), and `fallback-mapping.json` (entries for the six scenarios, evidence-pattern based, with no scenario IDs)
     - Add a config loader that validates each file against its contract schema and refuses to start when a file is missing or invalid
     - Confirm that all approved files resolve inside `testapp/`

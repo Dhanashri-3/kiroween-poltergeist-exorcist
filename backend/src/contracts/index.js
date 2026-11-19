@@ -11,6 +11,12 @@ import { verificationResultSchema } from './verification-result.schema.js';
 import { actionAllowlistEntrySchema, actionAllowlistSchema } from './action-allowlist.schema.js';
 import { fallbackMappingEntrySchema } from './fallback-mapping-entry.schema.js';
 import { commandTemplateSchema } from './command-template.schema.js';
+import {
+  approvedFilesDocumentSchema,
+  scenarioCatalogDocumentSchema,
+  commandTemplatesDocumentSchema,
+  fallbackMappingDocumentSchema,
+} from './config-documents.schema.js';
 
 /** Public schema names accepted by validate(). */
 export const SCHEMAS = {
@@ -26,6 +32,11 @@ export const SCHEMAS = {
   ActionAllowlistEntry: actionAllowlistEntrySchema, // single entry
   FallbackMappingEntry: fallbackMappingEntrySchema,
   CommandTemplate: commandTemplateSchema,
+  // Complete configuration documents.
+  ApprovedFilesDocument: approvedFilesDocumentSchema,
+  ScenarioCatalogDocument: scenarioCatalogDocumentSchema,
+  CommandTemplatesDocument: commandTemplatesDocumentSchema,
+  FallbackMappingDocument: fallbackMappingDocumentSchema,
 };
 
 export const SCHEMA_NAMES = Object.freeze(Object.keys(SCHEMAS));
@@ -36,6 +47,9 @@ ajv.addSchema(commonSchema);
 ajv.addSchema(actionAllowlistEntrySchema);
 ajv.addSchema(diagnosisSchema);
 ajv.addSchema(repairPlanSchema);
+ajv.addSchema(scenarioCatalogEntrySchema);
+ajv.addSchema(fallbackMappingEntrySchema);
+ajv.addSchema(commandTemplateSchema);
 
 const validators = new Map();
 for (const [name, schema] of Object.entries(SCHEMAS)) {

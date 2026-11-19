@@ -13,6 +13,22 @@ const repairPlan = {
   change: { find: 'a', replace: 'b' }, rationale: 'restore handler',
 };
 
+const step = { file: 'public/button.js', find: 'a', replace: 'b' };
+const scenarioEntry = {
+  scenarioId: 'button-failure', label: 'Button', targetComponent: 'button', severity: 'high', targetFiles: ['public/button.js'],
+  injection: { type: 'replace_text', steps: [step] },
+  reversal: { type: 'replace_text', steps: [{ file: step.file, find: 'b', replace: 'a' }] },
+  expectedRepairAction: { actionType: 'replace_text', targetFile: 'public/button.js', change: { find: 'b', replace: 'a' } },
+};
+const fallbackEntry = {
+  entryId: 'f1',
+  evidencePattern: { healthCheckId: 'button', status: 'fail', errorPattern: '^click' },
+  sourceCheck: { file: 'public/button.js', contains: 'x' },
+  diagnosisTemplate: { component: 'button', suspectedFile: 'public/button.js', location: 'handler', rootCause: 'x', confidence: 0.5 },
+  planTemplate: { actionType: 'replace_text', targetFile: 'public/button.js', change: { find: 'b', replace: 'a' }, rationale: 'r' },
+};
+const commandTemplate = { templateId: 't1', executable: 'npx', args: ['vitest', 'run'], allowedParams: ['button', 'card'], timeoutMs: 120000 };
+
 const samples = {
   Event: {
     valid: { id: '123e4567-e89b-42d3-a456-426614174000', seq: 1, ts, type: 'detection', component: 'monitor', incidentId: null, runId: null, payload: {} },
@@ -34,7 +50,7 @@ const samples = {
   Diagnosis: { valid: diagnosis, invalid: { ...diagnosis, confidence: 1.5 } },
   RepairPlan: { valid: repairPlan, invalid: { ...repairPlan, command: 'rm -rf /' } },
   ScenarioCatalogEntry: {
-    valid: { scenarioId: 'button-failure', label: 'Button', targetComponent: 'button', severity: 'high', targetFiles: ['public/button.js'], injection: { type: 'replace' }, reversal: { type: 'restore' }, expectedRepairAction: 'text-replace' },
+    valid: scenarioEntry,
     invalid: { scenarioId: 'x', targetFiles: [] },
   },
   Snapshot: {
@@ -54,12 +70,28 @@ const samples = {
     invalid: { actionType: 'text-replace' },
   },
   FallbackMappingEntry: {
-    valid: { entryId: 'f1', evidencePattern: { check: 'button' }, sourceCheck: { file: 'public/button.js' }, diagnosisTemplate: { rootCause: 'x' }, planTemplate: { actionType: 'text-replace' } },
+    valid: fallbackEntry,
     invalid: { entryId: 'f1', evidencePattern: {} },
   },
   CommandTemplate: {
-    valid: { templateId: 't1', executable: 'npx', args: ['vitest', 'run'], allowedParams: ['button', 'card'], timeoutMs: 120000 },
+    valid: commandTemplate,
     invalid: { templateId: 't1', executable: 'npx', args: [1], allowedParams: 'button', timeoutMs: 0 },
+  },
+  ApprovedFilesDocument: {
+    valid: { version: '1', files: ['public/button.js'] },
+    invalid: { version: '1', files: [] },
+  },
+  ScenarioCatalogDocument: {
+    valid: { version: '1', scenarios: Array.from({ length: 6 }, () => scenarioEntry) },
+    invalid: { version: '1', scenarios: [scenarioEntry] },
+  },
+  CommandTemplatesDocument: {
+    valid: { version: '1', templates: [commandTemplate] },
+    invalid: { templates: [commandTemplate] },
+  },
+  FallbackMappingDocument: {
+    valid: { version: '1', entries: [fallbackEntry] },
+    invalid: { version: '1', entries: [] },
   },
 };
 

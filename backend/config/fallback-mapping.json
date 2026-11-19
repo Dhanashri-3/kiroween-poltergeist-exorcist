@@ -1,0 +1,113 @@
+{
+  "version": "1.0.0",
+  "entries": [
+    {
+      "entryId": "fm-click-count-not-incremented",
+      "evidencePattern": { "healthCheckId": "button", "status": "fail", "errorPattern": "^click handler produced" },
+      "sourceCheck": { "file": "public/button.js", "contains": "count = count;" },
+      "diagnosisTemplate": {
+        "component": "button",
+        "suspectedFile": "public/button.js",
+        "location": "click handler inside mount()",
+        "rootCause": "The click handler assigns the counter to itself instead of calling nextCount, so the click count never changes.",
+        "confidence": 0.9
+      },
+      "planTemplate": {
+        "actionType": "replace_text",
+        "targetFile": "public/button.js",
+        "change": { "find": "count = count;", "replace": "count = nextCount(count);" },
+        "rationale": "Call nextCount so each click increments the counter."
+      }
+    },
+    {
+      "entryId": "fm-layout-display-not-grid",
+      "evidencePattern": { "healthCheckId": "layout", "status": "fail", "errorPattern": "^\\.layout-section display is" },
+      "sourceCheck": { "file": "public/layout.css", "contains": "display: inline;" },
+      "diagnosisTemplate": {
+        "component": "layout",
+        "suspectedFile": "public/layout.css",
+        "location": ".layout-section rule",
+        "rootCause": "The .layout-section rule uses an inline display value, which breaks the two-column grid layout.",
+        "confidence": 0.9
+      },
+      "planTemplate": {
+        "actionType": "replace_style_rule",
+        "targetFile": "public/layout.css",
+        "change": { "find": "display: inline;", "replace": "display: grid;" },
+        "rationale": "Restore display: grid on the layout section."
+      }
+    },
+    {
+      "entryId": "fm-card-hidden-by-style",
+      "evidencePattern": { "healthCheckId": "card", "status": "fail", "errorPattern": "^\\.card is hidden" },
+      "sourceCheck": { "file": "public/card.css", "contains": "display: none;" },
+      "diagnosisTemplate": {
+        "component": "card",
+        "suspectedFile": "public/card.css",
+        "location": ".card rule",
+        "rootCause": "The .card rule sets display: none, so the card is not visible.",
+        "confidence": 0.9
+      },
+      "planTemplate": {
+        "actionType": "replace_style_rule",
+        "targetFile": "public/card.css",
+        "change": { "find": " display: none;", "replace": "" },
+        "rationale": "Remove the declaration that hides the card."
+      }
+    },
+    {
+      "entryId": "fm-items-endpoint-returns-error",
+      "evidencePattern": { "healthCheckId": "dataPanel", "status": "fail", "errorPattern": "^mock API returned HTTP 5\\d\\d" },
+      "sourceCheck": { "file": "mock-api.js", "contains": "res.writeHead(500," },
+      "diagnosisTemplate": {
+        "component": "dataPanel",
+        "suspectedFile": "mock-api.js",
+        "location": "GET /api/items handler",
+        "rootCause": "The items handler responds with HTTP 500 instead of 200.",
+        "confidence": 0.9
+      },
+      "planTemplate": {
+        "actionType": "replace_mock_api_handler",
+        "targetFile": "mock-api.js",
+        "change": { "find": "res.writeHead(500,", "replace": "res.writeHead(200," },
+        "rationale": "Return HTTP 200 from the items handler."
+      }
+    },
+    {
+      "entryId": "fm-button-style-rule-missing",
+      "evidencePattern": { "healthCheckId": "button", "status": "fail", "errorPattern": "^button style missing or hidden" },
+      "sourceCheck": { "file": "public/button.css", "contains": "#test-btn {" },
+      "diagnosisTemplate": {
+        "component": "button",
+        "suspectedFile": "public/button.css",
+        "location": "primary button rule selector",
+        "rootCause": "The button style rule uses the selector #test-btn, which matches no element, so the button loses its styling.",
+        "confidence": 0.85
+      },
+      "planTemplate": {
+        "actionType": "replace_style_rule",
+        "targetFile": "public/button.css",
+        "change": { "find": "#test-btn {", "replace": "#test-button {" },
+        "rationale": "Restore the selector so the rule matches the button element."
+      }
+    },
+    {
+      "entryId": "fm-data-panel-wrong-endpoint",
+      "evidencePattern": { "healthCheckId": "dataPanel", "status": "fail", "errorPattern": "^data panel did not render API data" },
+      "sourceCheck": { "file": "public/data-panel.js", "contains": "var ENDPOINT = '/api/itemz';" },
+      "diagnosisTemplate": {
+        "component": "dataPanel",
+        "suspectedFile": "public/data-panel.js",
+        "location": "ENDPOINT constant",
+        "rootCause": "The data panel requests /api/itemz, which does not exist, so no data loads.",
+        "confidence": 0.9
+      },
+      "planTemplate": {
+        "actionType": "replace_text",
+        "targetFile": "public/data-panel.js",
+        "change": { "find": "var ENDPOINT = '/api/itemz';", "replace": "var ENDPOINT = '/api/items';" },
+        "rationale": "Point the data panel at the real items endpoint."
+      }
+    }
+  ]
+}

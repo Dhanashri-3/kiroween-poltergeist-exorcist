@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "files": [
+    "mock-api.js",
+    "public/button.js",
+    "public/button.css",
+    "public/card.js",
+    "public/card.css",
+    "public/data-panel.js",
+    "public/data-panel.css",
+    "public/layout.css"
+  ]
+}

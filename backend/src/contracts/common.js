@@ -37,10 +37,46 @@ export const EVENT_TYPES = [
   'timeout',
 ];
 
+/** Fixed component identifiers (the Test_App health check names). */
+export const COMPONENT_IDS = ['button', 'layout', 'dataPanel', 'card'];
+export const SEVERITIES = ['low', 'medium', 'high', 'critical'];
+
 export const commonSchema = {
   $id: COMMON_ID,
   $defs: {
     nonEmptyString: { type: 'string', minLength: 1 },
+    componentId: { type: 'string', enum: COMPONENT_IDS },
+    severity: { type: 'string', enum: SEVERITIES },
+    // {find, replace} change pair: find must be non-empty, replace may be empty (deletion).
+    changePair: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['find', 'replace'],
+      properties: { find: { type: 'string', minLength: 1 }, replace: { type: 'string' } },
+    },
+    // Deterministic text transform used by Scenario_Catalog injection and reversal.
+    replaceTextTransform: {
+      type: 'object',
+      additionalProperties: false,
+      required: ['type', 'steps'],
+      properties: {
+        type: { type: 'string', const: 'replace_text' },
+        steps: {
+          type: 'array',
+          minItems: 1,
+          items: {
+            type: 'object',
+            additionalProperties: false,
+            required: ['file', 'find', 'replace'],
+            properties: {
+              file: { type: 'string', minLength: 1 },
+              find: { type: 'string', minLength: 1 },
+              replace: { type: 'string' },
+            },
+          },
+        },
+      },
+    },
     uuid: {
       type: 'string',
       pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$',
