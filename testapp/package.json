@@ -1,0 +1,7 @@
+{
+  "name": "testapp",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.65.1"
+  }
+}

@@ -94,6 +94,25 @@
         "chatSessionId": "sess_49c0d3ea-db85-4c77-87f8-f493a5afa80a",
         "timestamp": 1795072115085
       }
+    ],
+    "2.3 Add baseline tests for the Test_App": [
+      {
+        "executionId": "1658e40a-628a-48e4-950e-89417f683f07",
+        "chatSessionId": "sess_49c0d3ea-db85-4c77-87f8-f493a5afa80a",
+        "timestamp": 1795072638109
+      },
+      {
+        "executionId": "e51296e8-42cf-4732-b550-9aa7a18de34d",
+        "chatSessionId": "sess_49c0d3ea-db85-4c77-87f8-f493a5afa80a",
+        "timestamp": 1795076147834
+      }
+    ],
+    "2. Isolated Test_App and configuration": [
+      {
+        "executionId": "e51296e8-42cf-4732-b550-9aa7a18de34d",
+        "chatSessionId": "sess_49c0d3ea-db85-4c77-87f8-f493a5afa80a",
+        "timestamp": 1795076147925
+      }
     ]
   }
 }

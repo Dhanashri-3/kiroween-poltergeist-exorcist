@@ -1,3 +1,6 @@
 backend/storage-data/
 
 node_modules/
+testapp/.vite/
+testapp/test-results/
+testapp/playwright-report/

@@ -39,7 +39,7 @@ Steering constraints that apply to every task:
     - Fail also if any agent module imports the local JSON storage implementation directly
     - _Requirements: 13.8, 15.11, 18.4, 20.2_
 
-- [ ] 2. Isolated Test_App and configuration
+- [x] 2. Isolated Test_App and configuration
   - [x] 2.1 Build the Test_App in `testapp/`
     - Create a small web app bound only to 127.0.0.1 with four designated components: a button, a layout section, a data panel loading from a local mock API, and a styled card
     - Add a `/health` endpoint returning HTTP 200 and JSON with the status of each component, based on real checks of the component behavior
@@ -53,7 +53,7 @@ Steering constraints that apply to every task:
     - Confirm that all approved files resolve inside `testapp/`
     - _Requirements: 1.6, 2.1, 2.2, 2.3, 13.7, 16.10_
 
-  - [ ] 2.3 Add baseline tests for the Test_App
+  - [x] 2.3 Add baseline tests for the Test_App
     - Create Vitest unit tests and Playwright tests in `testapp/` that cover each of the four components and the `/health` endpoint
     - Ensure each failure mode of the six scenarios makes at least one of these tests or a Health_Check fail
     - Make the baseline Verification_Result fail whenever any Health_Check fails, even if the tests pass
