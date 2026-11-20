@@ -113,6 +113,28 @@
         "chatSessionId": "sess_49c0d3ea-db85-4c77-87f8-f493a5afa80a",
         "timestamp": 1795076147925
       }
+    ],
+    "3.1 Implement the Storage interface and local JSON store": [
+      {
+        "executionId": "4c0ea528-2bdf-4ff7-8166-161bd05854ea",
+        "chatSessionId": "sess_116cfdc6-295d-4c8b-883c-ea5def8b7d03",
+        "timestamp": 1795096652858
+      },
+      {
+        "executionId": "d13308b5-2b54-42ee-a6f7-6f6127cdce1b",
+        "chatSessionId": "sess_116cfdc6-295d-4c8b-883c-ea5def8b7d03",
+        "timestamp": 1795099036896
+      },
+      {
+        "executionId": "a04ea326-955e-40e1-a87c-cec553774786",
+        "chatSessionId": "sess_116cfdc6-295d-4c8b-883c-ea5def8b7d03",
+        "timestamp": 1795101715051
+      },
+      {
+        "executionId": "a04ea326-955e-40e1-a87c-cec553774786",
+        "chatSessionId": "sess_116cfdc6-295d-4c8b-883c-ea5def8b7d03",
+        "timestamp": 1795102146836
+      }
     ]
   }
 }

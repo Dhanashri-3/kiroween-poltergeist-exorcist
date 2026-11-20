@@ -60,7 +60,7 @@ Steering constraints that apply to every task:
     - _Requirements: 1.7, 1.8, 3.7_
 
 - [ ] 3. Storage, file guard, redaction and Event_Log
-  - [ ] 3.1 Implement the Storage interface and local JSON store
+  - [x] 3.1 Implement the Storage interface and local JSON store
     - Define `get`, `put`, `append`, `list` per collection (`events`, `incidents`, `verifications`, `snapshots`)
     - Implement the local JSON store with write-to-temp then rename, a short retry on Windows rename failures, and corrupt-file handling (rename to `<name>.corrupt-<timestamp>`, start empty, report an error for the Event_Log to record)
     - _Requirements: 18.1, 18.2, 18.3, 18.4_
