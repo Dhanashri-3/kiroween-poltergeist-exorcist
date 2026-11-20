@@ -108,7 +108,7 @@ Steering constraints that apply to every task:
     - All writes go through the File_Guard
     - _Requirements: 3.1, 10.2, 10.9, 17.7_
 
-  - [ ] 4.2 Implement the catalog loader
+  - [x] 4.2 Implement the catalog loader
     - Load the versioned catalog at startup, validate schema, unique IDs, and that every target file is an Approved_File
     - On failure refuse to start and record an error Event naming the invalid entry
     - Reject unknown scenario IDs
