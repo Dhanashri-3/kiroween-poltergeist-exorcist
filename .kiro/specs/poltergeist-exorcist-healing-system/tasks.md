@@ -102,7 +102,7 @@ Steering constraints that apply to every task:
     - **Validates: Requirements 14.7**
 
 - [ ] 4. Scenario_Engine
-  - [ ] 4.1 Implement the shared Snapshot service
+  - [x] 4.1 Implement the shared Snapshot service
     - Create snapshots of all Approved_Files with SHA-256 checksums, restore from a snapshot, and return restored checksums for comparison
     - Place it in a shared module (for example `backend/src/file-guard/snapshots`) so Scenario_Engine and Repair_Executor do not import each other
     - All writes go through the File_Guard
