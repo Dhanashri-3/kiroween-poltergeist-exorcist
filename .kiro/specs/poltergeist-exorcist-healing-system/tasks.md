@@ -70,12 +70,12 @@ Steering constraints that apply to every task:
     - **Property 10: Serialization round trip**
     - **Validates: Requirements 6.10, 8.7, 14.9, 18.5**
 
-  - [ ] 3.3 Implement the File_Guard
+  - [x] 3.3 Implement the File_Guard
     - Provide `assertWritable(path, caller)` that resolves real paths and allows only Approved_Files and the storage directories
     - Return a denial that carries the data for a `security` Event
     - _Requirements: 17.1, 17.4_
 
-  - [ ] 3.4 Implement the Redactor
+  - [x] 3.4 Implement the Redactor
     - Provide `redact(value)` that removes Secret patterns (API-key shapes, bearer tokens, `.env`-style assignments) and refuses content from `.env*` and `.git/`
     - _Requirements: 13.6, 17.3_
 
