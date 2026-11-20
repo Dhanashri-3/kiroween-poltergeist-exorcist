@@ -135,7 +135,7 @@ Steering constraints that apply to every task:
     - **Property 3: Write scope and snapshot-first** (injection and rollback operations; repair operations are covered in 8.8)
     - **Validates: Requirements 3.1, 3.2, 3.5, 17.1, 17.4, 17.7**
 
-- [ ] 5. Monitor
+- [x] 5. Monitor
   - [x] 5.1 Implement the pure debounce function
     - `step(window, result, incidentOpen) -> {window, emit[]}` implementing: detection on two consecutive failures, `transient` for a single failure followed by a pass, availability-failure on unreachable app, `cleared` after two passes and withheld while an Incident references the check, and a 3-consecutive-pass confirmation signal for recovery
     - _Requirements: 5.3, 5.5, 5.6, 5.8, 5.9, 11.9_
@@ -148,7 +148,7 @@ Steering constraints that apply to every task:
     - **Property 6: Cleared event gating**
     - **Validates: Requirements 5.6, 5.9**
 
-  - [ ] 5.4 Implement health polling and evidence capture
+  - [x] 5.4 Implement health polling and evidence capture
     - Poll Health_Checks at a configurable interval (default 2 seconds), using only the Test_App and never reading `chaos.*` Events
     - On detection capture the Health_Check response, console errors, a DOM snapshot of the affected component and a screenshot path using Playwright, store large Evidence as files, and record `detection`, `transient` and `cleared` Events
     - Report detections to the Incident_Manager interface
