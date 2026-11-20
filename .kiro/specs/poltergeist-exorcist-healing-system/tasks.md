@@ -101,7 +101,7 @@ Steering constraints that apply to every task:
     - **Property 27: Payload size limit**
     - **Validates: Requirements 14.7**
 
-- [ ] 4. Scenario_Engine
+- [x] 4. Scenario_Engine
   - [x] 4.1 Implement the shared Snapshot service
     - Create snapshots of all Approved_Files with SHA-256 checksums, restore from a snapshot, and return restored checksums for comparison
     - Place it in a shared module (for example `backend/src/file-guard/snapshots`) so Scenario_Engine and Repair_Executor do not import each other
@@ -115,7 +115,7 @@ Steering constraints that apply to every task:
     - Include unit tests that the shipped catalog has exactly the six required scenarios with all required fields
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
 
-  - [ ] 4.3 Implement injection, reversal and reset
+  - [x] 4.3 Implement injection, reversal and reset
     - `inject(scenarioId, runId)` snapshots first, applies the deterministic transform only to the scenario's files, and records the `chaos.injection` Event with checksums, files and timestamp
     - Restore the snapshot and record an error Event if injection fails midway
     - `reverse(scenarioId)` and `reset()` (baseline restore plus `reset` Event)
