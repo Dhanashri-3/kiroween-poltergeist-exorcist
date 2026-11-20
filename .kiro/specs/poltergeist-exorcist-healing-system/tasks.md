@@ -136,7 +136,7 @@ Steering constraints that apply to every task:
     - **Validates: Requirements 3.1, 3.2, 3.5, 17.1, 17.4, 17.7**
 
 - [ ] 5. Monitor
-  - [ ] 5.1 Implement the pure debounce function
+  - [x] 5.1 Implement the pure debounce function
     - `step(window, result, incidentOpen) -> {window, emit[]}` implementing: detection on two consecutive failures, `transient` for a single failure followed by a pass, availability-failure on unreachable app, `cleared` after two passes and withheld while an Incident references the check, and a 3-consecutive-pass confirmation signal for recovery
     - _Requirements: 5.3, 5.5, 5.6, 5.8, 5.9, 11.9_
 
