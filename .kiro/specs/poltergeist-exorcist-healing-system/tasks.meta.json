@@ -159,6 +159,25 @@
         "chatSessionId": "sess_78e0d57f-6ff9-4540-b5a8-0e8aa3a1140a",
         "timestamp": 1795167481560
       }
+    ],
+    "3.6 Implement the Event_Log and publisher": [
+      {
+        "executionId": "cacadfc3-3d74-4b45-a789-5480aa17582c",
+        "chatSessionId": "sess_cc6cb674-1195-4dda-ac26-160d2d07b067",
+        "timestamp": 1795168227190
+      },
+      {
+        "executionId": "cacadfc3-3d74-4b45-a789-5480aa17582c",
+        "chatSessionId": "sess_cc6cb674-1195-4dda-ac26-160d2d07b067",
+        "timestamp": 1795168494008
+      }
+    ],
+    "3. Storage, file guard, redaction and Event_Log": [
+      {
+        "executionId": "cacadfc3-3d74-4b45-a789-5480aa17582c",
+        "chatSessionId": "sess_cc6cb674-1195-4dda-ac26-160d2d07b067",
+        "timestamp": 1795168494144
+      }
     ]
   }
 }

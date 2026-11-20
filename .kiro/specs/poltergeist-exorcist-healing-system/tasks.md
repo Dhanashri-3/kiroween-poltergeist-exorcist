@@ -59,7 +59,7 @@ Steering constraints that apply to every task:
     - Make the baseline Verification_Result fail whenever any Health_Check fails, even if the tests pass
     - _Requirements: 1.7, 1.8, 3.7_
 
-- [ ] 3. Storage, file guard, redaction and Event_Log
+- [x] 3. Storage, file guard, redaction and Event_Log
   - [x] 3.1 Implement the Storage interface and local JSON store
     - Define `get`, `put`, `append`, `list` per collection (`events`, `incidents`, `verifications`, `snapshots`)
     - Implement the local JSON store with write-to-temp then rename, a short retry on Windows rename failures, and corrupt-file handling (rename to `<name>.corrupt-<timestamp>`, start empty, report an error for the Event_Log to record)
@@ -83,7 +83,7 @@ Steering constraints that apply to every task:
     - **Property 23: Secret redaction**
     - **Validates: Requirements 13.6, 17.3**
 
-  - [ ] 3.6 Implement the Event_Log and publisher
+  - [x] 3.6 Implement the Event_Log and publisher
     - Append-only, assigns strictly increasing sequence numbers under a mutex, redacts, enforces the 64 KB payload limit by storing larger content as a referenced file, persists through Storage, then publishes to subscribers
     - Provide `readAfter(seq, filter)` and typed filtered views (including a view that excludes `chaos.*` events for non-Dashboard consumers)
     - If persisting fails, publish nothing and signal a storage error
