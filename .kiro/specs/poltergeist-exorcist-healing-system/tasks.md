@@ -155,7 +155,7 @@ Steering constraints that apply to every task:
     - _Requirements: 5.1, 5.2, 5.4, 5.7, 14.7_
 
 - [ ] 6. Incident_Manager
-  - [ ] 6.1 Implement the state machine transition table
+  - [x] 6.1 Implement the state machine transition table
     - States: `detected`, `investigating`, `planned`, `repairing`, `verifying`, `recovered`, `rolled_back`, `escalated`
     - Terminal: `recovered`, `escalated`. `rolled_back` is transient with exits to `investigating` and `escalated`
     - Encode the permitted transitions from the design state diagram, including rollback-verified preconditions and the `verifying`-only-from-`repairing` rule
