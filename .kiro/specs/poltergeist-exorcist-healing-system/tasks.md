@@ -154,7 +154,7 @@ Steering constraints that apply to every task:
     - Report detections to the Incident_Manager interface
     - _Requirements: 5.1, 5.2, 5.4, 5.7, 14.7_
 
-- [ ] 6. Incident_Manager
+- [x] 6. Incident_Manager
   - [x] 6.1 Implement the state machine transition table
     - States: `detected`, `investigating`, `planned`, `repairing`, `verifying`, `recovered`, `rolled_back`, `escalated`
     - Terminal: `recovered`, `escalated`. `rolled_back` is transient with exits to `investigating` and `escalated`
@@ -169,7 +169,7 @@ Steering constraints that apply to every task:
     - Cover each pair of states, rejected transitions leaving the Incident unchanged and recording an `error` Event
     - _Requirements: 19.2_
 
-  - [ ] 6.4 Implement the Incident_Manager
+  - [x] 6.4 Implement the Incident_Manager
     - `create`, `attach` (no duplicate Incident for the same failing component), `transition` (persist, record `incident.state` Event, reject illegal transitions with an `error` Event), allow at most one non-terminal Incident
     - `reload()` at startup flags Incidents in `repairing` or `verifying` as needing rollback verification, blocking injection, and rejects resume to `verifying` without a completed executor record
     - Guard `recovered`: require a stored Verification_Result with `overall=pass` for the Incident and the Monitor's 3-check confirmation
