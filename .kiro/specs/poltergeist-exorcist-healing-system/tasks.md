@@ -192,7 +192,7 @@ Steering constraints that apply to every task:
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 8. Safety_Gate and Repair_Executor
-  - [-] 8.1 Implement the Safety_Gate
+  - [x] 8.1 Implement the Safety_Gate
     - Pure deterministic `evaluate(plan, config)` with rules R1 to R7 from the design (allowlisted action, exact Approved_File after symlink resolution, no traversal or escape, forbidden categories, at most 50 changed lines and no deletion, no Secret/shell/external network/test-disable content, exactly one target and no shell field)
     - Return a decision listing every rule and reason, plus an in-memory-key HMAC approval token bound to the canonical plan hash on approval
     - Record a `gate` Event from the orchestrator side (the gate itself calls no AI model and does no I/O)
