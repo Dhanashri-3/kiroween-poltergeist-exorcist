@@ -191,7 +191,7 @@ Steering constraints that apply to every task:
 - [x] 7. Checkpoint - Foundations
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 8. Safety_Gate and Repair_Executor
+- [x] 8. Safety_Gate and Repair_Executor
   - [x] 8.1 Implement the Safety_Gate
     - Pure deterministic `evaluate(plan, config)` with rules R1 to R7 from the design (allowlisted action, exact Approved_File after symlink resolution, no traversal or escape, forbidden categories, at most 50 changed lines and no deletion, no Secret/shell/external network/test-disable content, exactly one target and no shell field)
     - Return a decision listing every rule and reason, plus an in-memory-key HMAC approval token bound to the canonical plan hash on approval
@@ -210,7 +210,7 @@ Steering constraints that apply to every task:
     - Cover allowlist violations, path traversal, symlink escape, oversize change, each Secret pattern, shell content and test-disable attempts
     - _Requirements: 19.1_
 
-  - [ ] 8.5 Implement the Repair_Executor
+  - [x] 8.5 Implement the Repair_Executor
     - `apply(plan, approval)` verifies the token matches the plan hash, snapshots all Approved_Files, writes only the single target file through the File_Guard, and records the `repair` Event with incident ID, target, snapshot ID and pre/post checksums
     - On failure restore the snapshot and record an error Event
     - `restore(snapshotId)` returns checksums for comparison
