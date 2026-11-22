@@ -67,6 +67,22 @@
     "9.4 Write property test for verification aggregation": {
       "status": "passed",
       "lastRunTimestamp": 1795337400522
+    },
+    "10.4 Write property test for Diagnosis validation and confidence gate": {
+      "status": "passed",
+      "lastRunTimestamp": 1795339099599
+    },
+    "10.5 Write property test for Repair_Plan structural validity": {
+      "status": "passed",
+      "lastRunTimestamp": 1795339681472
+    },
+    "10.7 Write property test for Fallback_Mapping determinism and isolation": {
+      "status": "passed",
+      "lastRunTimestamp": 1795339788675
+    },
+    "10.9 Write property test for repair source selection": {
+      "status": "passed",
+      "lastRunTimestamp": 1795339946832
     }
   },
   "executionHistory": {
@@ -736,6 +752,143 @@
         "executionId": "dec39236-d493-4c1e-91df-ecd99264d402",
         "chatSessionId": "sess_70ec4713-be49-48b3-b215-5319ef208605",
         "timestamp": 1795337410459
+      }
+    ],
+    "10.1 Implement the Exorcist input builder": [
+      {
+        "executionId": "e26549a9-44d1-481c-95c5-51a2e6935708",
+        "chatSessionId": "sess_99f75214-c924-4d95-8cb9-50a82424092e",
+        "timestamp": 1795337847048
+      },
+      {
+        "executionId": "e26549a9-44d1-481c-95c5-51a2e6935708",
+        "chatSessionId": "sess_99f75214-c924-4d95-8cb9-50a82424092e",
+        "timestamp": 1795338007563
+      }
+    ],
+    "10.2 Write property test for the information barrier": [
+      {
+        "executionId": "6e6a51a9-2da6-476d-8e6a-110389113369",
+        "chatSessionId": "sess_5373cef8-d1b9-4370-9330-c009c825a382",
+        "timestamp": 1795338545527
+      },
+      {
+        "executionId": "1e1ca0ec-f6b4-4223-8d8a-0e5c8b782a3b",
+        "chatSessionId": "sess_495059a3-a876-4787-882b-c07b932f71ff",
+        "timestamp": 1795338825418
+      },
+      {
+        "executionId": "b72da1c6-bb9f-4e92-ae9e-4976c27137ec",
+        "chatSessionId": "sess_5373cef8-d1b9-4370-9330-c009c825a382",
+        "timestamp": 1795339127563
+      },
+      {
+        "executionId": "b72da1c6-bb9f-4e92-ae9e-4976c27137ec",
+        "chatSessionId": "sess_5373cef8-d1b9-4370-9330-c009c825a382",
+        "timestamp": 1795339196978
+      }
+    ],
+    "10.3 Implement Diagnosis and Repair_Plan validators": [
+      {
+        "executionId": "1e1ca0ec-f6b4-4223-8d8a-0e5c8b782a3b",
+        "chatSessionId": "sess_495059a3-a876-4787-882b-c07b932f71ff",
+        "timestamp": 1795338825553
+      },
+      {
+        "executionId": "1e1ca0ec-f6b4-4223-8d8a-0e5c8b782a3b",
+        "chatSessionId": "sess_495059a3-a876-4787-882b-c07b932f71ff",
+        "timestamp": 1795338989370
+      }
+    ],
+    "10.4 Write property test for Diagnosis validation and confidence gate": [
+      {
+        "executionId": "80e0418c-c2ac-4565-aeda-b6a8f750a028",
+        "chatSessionId": "sess_705928be-21fe-40e5-bda3-080c283d3a73",
+        "timestamp": 1795339001031
+      },
+      {
+        "executionId": "80e0418c-c2ac-4565-aeda-b6a8f750a028",
+        "chatSessionId": "sess_705928be-21fe-40e5-bda3-080c283d3a73",
+        "timestamp": 1795339112584
+      }
+    ],
+    "10.6 Implement the Fallback_Mapping engine": [
+      {
+        "executionId": "f84a6f73-15c3-45db-a496-b9171739fbd0",
+        "chatSessionId": "sess_7491154e-f943-49d2-87cd-609348cd8528",
+        "timestamp": 1795339207179
+      },
+      {
+        "executionId": "f84a6f73-15c3-45db-a496-b9171739fbd0",
+        "chatSessionId": "sess_7491154e-f943-49d2-87cd-609348cd8528",
+        "timestamp": 1795339409070
+      }
+    ],
+    "10.8 Implement the Exorcist module with source selection": [
+      {
+        "executionId": "418abdee-455a-4bc2-8945-a1dac445ed59",
+        "chatSessionId": "sess_dad07cbc-44c2-46b5-8714-be67b9b2549c",
+        "timestamp": 1795339424250
+      },
+      {
+        "executionId": "418abdee-455a-4bc2-8945-a1dac445ed59",
+        "chatSessionId": "sess_dad07cbc-44c2-46b5-8714-be67b9b2549c",
+        "timestamp": 1795339568985
+      }
+    ],
+    "10.5 Write property test for Repair_Plan structural validity": [
+      {
+        "executionId": "4f8178bb-10c4-4c99-94a2-0bc838b9032c",
+        "chatSessionId": "sess_eb2bdcaa-8c7a-4771-8da3-6fbfb9579814",
+        "timestamp": 1795339578866
+      },
+      {
+        "executionId": "4f8178bb-10c4-4c99-94a2-0bc838b9032c",
+        "chatSessionId": "sess_eb2bdcaa-8c7a-4771-8da3-6fbfb9579814",
+        "timestamp": 1795339691400
+      }
+    ],
+    "10.7 Write property test for Fallback_Mapping determinism and isolation": [
+      {
+        "executionId": "52c5b398-a4fd-44da-82c8-b7cc84147e80",
+        "chatSessionId": "sess_59c1c89f-2642-4dfa-83ef-5f548d431335",
+        "timestamp": 1795339702401
+      },
+      {
+        "executionId": "52c5b398-a4fd-44da-82c8-b7cc84147e80",
+        "chatSessionId": "sess_59c1c89f-2642-4dfa-83ef-5f548d431335",
+        "timestamp": 1795339797821
+      }
+    ],
+    "10.9 Write property test for repair source selection": [
+      {
+        "executionId": "2eb96c02-4d0c-44b1-baa1-c48a138f432f",
+        "chatSessionId": "sess_68dbee50-fced-4638-b21e-af638e1cc4db",
+        "timestamp": 1795339808849
+      },
+      {
+        "executionId": "2eb96c02-4d0c-44b1-baa1-c48a138f432f",
+        "chatSessionId": "sess_68dbee50-fced-4638-b21e-af638e1cc4db",
+        "timestamp": 1795339956493
+      }
+    ],
+    "10.10 Implement the Poltergeist module": [
+      {
+        "executionId": "4af880f2-b52e-4abd-8004-78b543649f86",
+        "chatSessionId": "sess_ea9fbc40-9459-43cc-a5e2-da6dae296c14",
+        "timestamp": 1795339967685
+      },
+      {
+        "executionId": "4af880f2-b52e-4abd-8004-78b543649f86",
+        "chatSessionId": "sess_ea9fbc40-9459-43cc-a5e2-da6dae296c14",
+        "timestamp": 1795340100581
+      }
+    ],
+    "10. Exorcist and Poltergeist agents": [
+      {
+        "executionId": "4af880f2-b52e-4abd-8004-78b543649f86",
+        "chatSessionId": "sess_ea9fbc40-9459-43cc-a5e2-da6dae296c14",
+        "timestamp": 1795340100649
       }
     ]
   }

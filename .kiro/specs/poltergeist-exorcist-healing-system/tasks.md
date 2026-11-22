@@ -249,49 +249,49 @@ Steering constraints that apply to every task:
     - **Property 18: Verification aggregation**
     - **Validates: Requirements 11.3, 11.4, 11.5, 11.6**
 
-- [ ] 10. Exorcist and Poltergeist agents
-  - [ ] 10.1 Implement the Exorcist input builder
+- [x] 10. Exorcist and Poltergeist agents
+  - [x] 10.1 Implement the Exorcist input builder
     - `buildExorcistInput(incident, eventLog)` returns only Evidence, a read-only redacted source view of the Approved_Files and the Incident's own prior attempts, with no scenario ID, injection method or `chaos.*` data and no `.env` or `.git` content
     - _Requirements: 3.8, 7.1, 7.4, 17.3_
 
-  - [ ]* 10.2 Write property test for the information barrier
+  - [x] 10.2 Write property test for the information barrier
     - **Property 7: Information barrier**
     - **Validates: Requirements 3.8, 5.2, 7.4**
 
-  - [ ] 10.3 Implement Diagnosis and Repair_Plan validators
+  - [x] 10.3 Implement Diagnosis and Repair_Plan validators
     - Validate Diagnosis against the schema (confidence 0 to 1, evidence used, status) and treat confidence below 0.5 or a missing Diagnosis as `inconclusive`
     - Validate Repair_Plan structure: exactly one target, allowlisted action, structured change, no command field, and detect an identical plan to a previously failed one
     - _Requirements: 7.2, 7.5, 7.8, 7.9, 8.1, 8.2, 8.3, 8.6_
 
-  - [ ]* 10.4 Write property test for Diagnosis validation and confidence gate
+  - [x] 10.4 Write property test for Diagnosis validation and confidence gate
     - **Property 11: Diagnosis validation and confidence gate**
     - **Validates: Requirements 7.2, 7.5, 7.8, 7.9**
 
-  - [ ]* 10.5 Write property test for Repair_Plan structural validity
+  - [x] 10.5 Write property test for Repair_Plan structural validity
     - **Property 12: Repair_Plan structural validity**
     - **Validates: Requirements 8.1, 8.2, 8.3, 8.6**
 
-  - [ ] 10.6 Implement the Fallback_Mapping engine
+  - [x] 10.6 Implement the Fallback_Mapping engine
     - Deterministic matching of Evidence patterns and Approved_Files content to a Diagnosis (`rule_based`) and Repair_Plan
     - No access to the scenario ID or chaos Events; covers only the approved demo scenarios
     - _Requirements: 16.6, 16.8, 16.10_
 
-  - [ ]* 10.7 Write property test for Fallback_Mapping determinism and isolation
+  - [x] 10.7 Write property test for Fallback_Mapping determinism and isolation
     - **Property 31: Fallback_Mapping determinism and isolation**
     - **Validates: Requirements 16.10**
 
-  - [ ] 10.8 Implement the Exorcist module with source selection
+  - [x] 10.8 Implement the Exorcist module with source selection
     - Define an AI client interface and a stub implementation; do not add an AI SDK until the provider is chosen and reviewed
     - `diagnose` and `plan` use the AI service when available; when it is unavailable and a mapping entry matches use the mapping (mark `rule_based`); otherwise return a no-source outcome for the Orchestrator to escalate
     - On retries pass the failed plan and its Verification_Result and require a different plan
     - Read the credential only from an environment variable, never write it to a file; Exorcist has no write or shell tools
     - _Requirements: 7.1, 7.3, 8.1, 8.5, 13.9, 16.5, 16.6, 16.8, 16.9_
 
-  - [ ]* 10.9 Write property test for repair source selection
+  - [x] 10.9 Write property test for repair source selection
     - **Property 30: Repair source selection**
     - **Validates: Requirements 16.5, 16.6, 16.8, 16.9**
 
-  - [ ] 10.10 Implement the Poltergeist module
+  - [x] 10.10 Implement the Poltergeist module
     - Select scenarios only from the catalog public view (ID, label, severity), or use the validated user choice
     - Generate a run ID, record the selection Event with rationale, trigger failures only through the Scenario_Engine injection interface
     - Record the `battle_result` Event at the terminal state; no file or shell access and no access to Exorcist interfaces
