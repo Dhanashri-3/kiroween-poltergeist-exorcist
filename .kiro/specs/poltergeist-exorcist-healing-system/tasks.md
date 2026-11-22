@@ -65,7 +65,7 @@ Steering constraints that apply to every task:
     - Implement the local JSON store with write-to-temp then rename, a short retry on Windows rename failures, and corrupt-file handling (rename to `<name>.corrupt-<timestamp>`, start empty, report an error for the Event_Log to record)
     - _Requirements: 18.1, 18.2, 18.3, 18.4_
 
-  - [ ]* 3.2 Write property test for serialization round trip
+  - [x] 3.2 Write property test for serialization round trip
     - Install fast-check in `backend/` in this task if it is not yet installed, after review, and record it in the dependency review
     - **Property 10: Serialization round trip**
     - **Validates: Requirements 6.10, 8.7, 14.9, 18.5**
@@ -79,7 +79,7 @@ Steering constraints that apply to every task:
     - Provide `redact(value)` that removes Secret patterns (API-key shapes, bearer tokens, `.env`-style assignments) and refuses content from `.env*` and `.git/`
     - _Requirements: 13.6, 17.3_
 
-  - [ ]* 3.5 Write property test for secret redaction
+  - [x] 3.5 Write property test for secret redaction
     - **Property 23: Secret redaction**
     - **Validates: Requirements 13.6, 17.3**
 
@@ -89,15 +89,15 @@ Steering constraints that apply to every task:
     - If persisting fails, publish nothing and signal a storage error
     - _Requirements: 14.1, 14.2, 14.6, 14.7, 14.8, 14.10_
 
-  - [ ]* 3.7 Write property test for the Event sequence invariant
+  - [x] 3.7 Write property test for the Event sequence invariant
     - **Property 24: Event sequence invariant**
     - **Validates: Requirements 14.1, 14.10**
 
-  - [ ]* 3.8 Write property test for persist-before-publish
+  - [x] 3.8 Write property test for persist-before-publish
     - **Property 25: Persist before publish**
     - **Validates: Requirements 14.2**
 
-  - [ ]* 3.9 Write property test for the payload size limit
+  - [x] 3.9 Write property test for the payload size limit
     - **Property 27: Payload size limit**
     - **Validates: Requirements 14.7**
 
@@ -123,15 +123,15 @@ Steering constraints that apply to every task:
     - Reject injection while an Incident is non-terminal, with a `chaos.rejected` Event
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8_
 
-  - [ ]* 4.4 Write property test for scenario injection round trip
+  - [x] 4.4 Write property test for scenario injection round trip
     - **Property 1: Scenario injection round trip**
     - **Validates: Requirements 2.6**
 
-  - [ ]* 4.5 Write property test for catalog validation and unknown IDs
+  - [x] 4.5 Write property test for catalog validation and unknown IDs
     - **Property 2: Catalog validation and unknown IDs**
     - **Validates: Requirements 2.4, 2.5**
 
-  - [ ]* 4.6 Write property test for injection write scope
+  - [x] 4.6 Write property test for injection write scope
     - **Property 3: Write scope and snapshot-first** (injection and rollback operations; repair operations are covered in 8.8)
     - **Validates: Requirements 3.1, 3.2, 3.5, 17.1, 17.4, 17.7**
 
@@ -140,11 +140,11 @@ Steering constraints that apply to every task:
     - `step(window, result, incidentOpen) -> {window, emit[]}` implementing: detection on two consecutive failures, `transient` for a single failure followed by a pass, availability-failure on unreachable app, `cleared` after two passes and withheld while an Incident references the check, and a 3-consecutive-pass confirmation signal for recovery
     - _Requirements: 5.3, 5.5, 5.6, 5.8, 5.9, 11.9_
 
-  - [ ]* 5.2 Write property test for detection debounce
+  - [x] 5.2 Write property test for detection debounce
     - **Property 5: Detection debounce**
     - **Validates: Requirements 5.3, 5.5, 5.8**
 
-  - [ ]* 5.3 Write property test for cleared event gating
+  - [x] 5.3 Write property test for cleared event gating
     - **Property 6: Cleared event gating**
     - **Validates: Requirements 5.6, 5.9**
 
@@ -161,11 +161,11 @@ Steering constraints that apply to every task:
     - Encode the permitted transitions from the design state diagram, including rollback-verified preconditions and the `verifying`-only-from-`repairing` rule
     - _Requirements: 6.2, 6.3, 6.4, 10.10, 10.11_
 
-  - [ ]* 6.2 Write property test for state machine conformance
+  - [x] 6.2 Write property test for state machine conformance
     - **Property 8: State machine conformance**
     - **Validates: Requirements 6.2, 6.3, 6.4, 10.10, 10.11, 12.2, 12.5**
 
-  - [ ]* 6.3 Write unit tests for every permitted and rejected transition
+  - [x] 6.3 Write unit tests for every permitted and rejected transition
     - Cover each pair of states, rejected transitions leaving the Incident unchanged and recording an `error` Event
     - _Requirements: 19.2_
 
@@ -176,15 +176,15 @@ Steering constraints that apply to every task:
     - Enforce the information barrier: never read `chaos.*` Events
     - _Requirements: 6.1, 6.5, 6.6, 6.7, 6.8, 6.9, 10.11, 11.7, 11.8, 11.9_
 
-  - [ ]* 6.5 Write property test for duplicate detection attaches
+  - [x] 6.5 Write property test for duplicate detection attaches
     - **Property 9: Duplicate detection attaches**
     - **Validates: Requirements 6.7**
 
-  - [ ]* 6.6 Write property test for recovery requires proof
+  - [x] 6.6 Write property test for recovery requires proof
     - **Property 19: Recovery requires proof**
     - **Validates: Requirements 11.7, 11.8, 11.9**
 
-  - [ ]* 6.7 Write property test for single active Incident
+  - [x] 6.7 Write property test for single active Incident
     - **Property 4: Single active Incident**
     - **Validates: Requirements 3.4, 6.8, 13.4**
 
