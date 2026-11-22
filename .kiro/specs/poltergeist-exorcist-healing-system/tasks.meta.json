@@ -1,5 +1,22 @@
 {
-  "pbtResults": {},
+  "pbtResults": {
+    "8.2 Write property test for Safety_Gate decision correctness": {
+      "status": "passed",
+      "lastRunTimestamp": 1795267735439
+    },
+    "8.3 Write property test for Safety_Gate determinism": {
+      "status": "passed",
+      "lastRunTimestamp": 1795268514346
+    },
+    "8.6 Write property test for approval binding": {
+      "status": "passed",
+      "lastRunTimestamp": 1795326091869
+    },
+    "8.7 Write property test for apply and restore round trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1795326339401
+    }
+  },
   "executionHistory": {
     "1.1 Create the dependency review document and docs skeleton": [
       {
@@ -325,6 +342,100 @@
         "executionId": "4d02aace-de64-4023-a767-a6e9025354ae",
         "chatSessionId": "sess_f44446a3-efcd-4d08-b6fd-5ee42a3d8c0d",
         "timestamp": 1795265788085
+      }
+    ],
+    "9.1 Implement the command builder": [
+      {
+        "executionId": "8c3a3fb0-7806-4cca-9b3a-1a5177ab709c",
+        "chatSessionId": "sess_e9bafaa6-8069-4892-a560-7d2b0dda3b7f",
+        "timestamp": 1795266101503
+      },
+      {
+        "executionId": "8c3a3fb0-7806-4cca-9b3a-1a5177ab709c",
+        "chatSessionId": "sess_e9bafaa6-8069-4892-a560-7d2b0dda3b7f",
+        "timestamp": 1795266495969
+      },
+      {
+        "executionId": "73480d70-e8ce-4eec-ad13-aa26efb38bc0",
+        "chatSessionId": "sess_1fdac54f-96fc-47ac-a493-13855e5dc8f6",
+        "timestamp": 1795266855594
+      }
+    ],
+    "8.2 Write property test for Safety_Gate decision correctness": [
+      {
+        "executionId": "033ae88f-fac4-4eec-8a08-ed8f4f379f87",
+        "chatSessionId": "sess_f458d26a-7114-4ea9-9cbe-466d051a7daa",
+        "timestamp": 1795267552092
+      },
+      {
+        "executionId": "033ae88f-fac4-4eec-8a08-ed8f4f379f87",
+        "chatSessionId": "sess_f458d26a-7114-4ea9-9cbe-466d051a7daa",
+        "timestamp": 1795267760098
+      }
+    ],
+    "8.3 Write property test for Safety_Gate determinism": [
+      {
+        "executionId": "209a6d08-0fda-4d45-9e26-e88317558533",
+        "chatSessionId": "sess_73fece71-571d-4293-9f45-32118786a39e",
+        "timestamp": 1795267873496
+      },
+      {
+        "executionId": "209a6d08-0fda-4d45-9e26-e88317558533",
+        "chatSessionId": "sess_73fece71-571d-4293-9f45-32118786a39e",
+        "timestamp": 1795268881538
+      }
+    ],
+    "8.4 Write unit tests for the Safety_Gate": [
+      {
+        "executionId": "2a9a1d81-6bff-461e-836d-0f21e6aae35e",
+        "chatSessionId": "sess_22ce5d9b-8490-4bd1-95f2-b45c153769e6",
+        "timestamp": 1795269922102
+      },
+      {
+        "executionId": "37562cf1-79ab-4ce3-a31f-499ec95c4d81",
+        "chatSessionId": "sess_f2867a9d-02d3-4170-a812-be32c726da3b",
+        "timestamp": 1795325466839
+      },
+      {
+        "executionId": "37562cf1-79ab-4ce3-a31f-499ec95c4d81",
+        "chatSessionId": "sess_f2867a9d-02d3-4170-a812-be32c726da3b",
+        "timestamp": 1795325594968
+      }
+    ],
+    "8.6 Write property test for approval binding": [
+      {
+        "executionId": "c55c999b-9269-4642-bbb0-d830ae98831e",
+        "chatSessionId": "sess_7b3268dd-25aa-4387-bb75-fb0720c390c2",
+        "timestamp": 1795325776628
+      },
+      {
+        "executionId": "c55c999b-9269-4642-bbb0-d830ae98831e",
+        "chatSessionId": "sess_7b3268dd-25aa-4387-bb75-fb0720c390c2",
+        "timestamp": 1795326100595
+      }
+    ],
+    "8.7 Write property test for apply and restore round trip": [
+      {
+        "executionId": "9a38e49e-491c-40ef-b9d3-bcbe4c2daeb8",
+        "chatSessionId": "sess_ea5ee8bd-ee9a-4889-a57a-b712e7bf767b",
+        "timestamp": 1795326227698
+      },
+      {
+        "executionId": "9a38e49e-491c-40ef-b9d3-bcbe4c2daeb8",
+        "chatSessionId": "sess_ea5ee8bd-ee9a-4889-a57a-b712e7bf767b",
+        "timestamp": 1795326349435
+      }
+    ],
+    "8.8 Write property test for repair write scope": [
+      {
+        "executionId": "d70cc00a-bf3b-4993-893f-555c6acdc0bf",
+        "chatSessionId": "sess_7e2381b0-a985-4a1d-b5d0-0d4366e39f36",
+        "timestamp": 1795326378688
+      },
+      {
+        "executionId": "d70cc00a-bf3b-4993-893f-555c6acdc0bf",
+        "chatSessionId": "sess_7e2381b0-a985-4a1d-b5d0-0d4366e39f36",
+        "timestamp": 1795326470843
       }
     ]
   }

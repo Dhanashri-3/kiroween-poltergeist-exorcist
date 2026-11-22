@@ -198,15 +198,15 @@ Steering constraints that apply to every task:
     - Record a `gate` Event from the orchestrator side (the gate itself calls no AI model and does no I/O)
     - _Requirements: 8.2, 8.3, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.9_
 
-  - [ ]* 8.2 Write property test for Safety_Gate decision correctness
+  - [x] 8.2 Write property test for Safety_Gate decision correctness
     - **Property 13: Safety_Gate decision correctness**
     - **Validates: Requirements 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7**
 
-  - [ ]* 8.3 Write property test for Safety_Gate determinism
+  - [x] 8.3 Write property test for Safety_Gate determinism
     - **Property 14: Safety_Gate determinism**
     - **Validates: Requirements 9.10**
 
-  - [ ]* 8.4 Write unit tests for the Safety_Gate
+  - [x] 8.4 Write unit tests for the Safety_Gate
     - Cover allowlist violations, path traversal, symlink escape, oversize change, each Secret pattern, shell content and test-disable attempts
     - _Requirements: 19.1_
 
@@ -217,15 +217,15 @@ Steering constraints that apply to every task:
     - Expose no shell and no general write function
     - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.7, 10.9_
 
-  - [ ]* 8.6 Write property test for approval binding
+  - [x] 8.6 Write property test for approval binding
     - **Property 16: Approval binding**
     - **Validates: Requirements 10.1**
 
-  - [ ]* 8.7 Write property test for apply and restore round trip
+  - [x] 8.7 Write property test for apply and restore round trip
     - **Property 17: Apply and restore round trip**
     - **Validates: Requirements 10.8, 12.3**
 
-  - [ ]* 8.8 Write property test for repair write scope
+  - [x] 8.8 Write property test for repair write scope
     - **Property 3: Write scope and snapshot-first** (repair operations: single target, snapshot first, restore on failure)
     - **Validates: Requirements 10.2, 10.3, 10.7, 17.1, 17.7**
 

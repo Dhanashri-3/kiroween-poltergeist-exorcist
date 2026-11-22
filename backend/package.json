@@ -12,6 +12,7 @@
     "express": "^4.21.2"
   },
   "devDependencies": {
+    "fast-check": "^4.10.3",
     "vitest": "^2.1.8"
   }
 }
