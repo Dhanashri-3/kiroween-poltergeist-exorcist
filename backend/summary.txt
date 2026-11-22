@@ -1,0 +1,1 @@
+files=56 total=926 passed=919 failed=2 success=False bad=C:/Users/spsdh/OneDrive/Desktop/My File/kiroween-poltergeist-exorcist/backend/tests/serialization-round-trip.property.test.js;C:/Users/spsdh/OneDrive/Desktop/My File/kiroween-poltergeist-exorcist/backend/tests/verification-engine.test.js

@@ -253,11 +253,12 @@ export function createVerificationEngine(options = {}) {
     if (!Number.isInteger(attemptNo) || attemptNo < 1) throw new VerificationError('invalid_incident', 'attemptNo must be a positive integer.');
 
     // Build every command first: an unknown component fails here, before any process starts.
+    // Only Health_Check takes the component; Vitest and Playwright run their full suites.
     const param = component === APP_COMPONENT ? undefined : component;
     const plan = CHECK_KINDS.map(({ kind, templateId }) => {
       let command;
       try {
-        command = commandBuilder.build(templateId, param);
+        command = commandBuilder.build(templateId, templateId === 'Health_Check' ? param : undefined);
       } catch (e) {
         throw new VerificationError('invalid_component', e?.message ?? 'Command could not be built.');
       }

@@ -161,6 +161,29 @@ describe('Verification_Engine', () => {
     expect(stored.size).toBe(0);
   });
 
+  it('passes the component only to Health_Check, never to Vitest or Playwright (pinned template shape)', async () => {
+    const pinned = JSON.parse(fs.readFileSync(new URL('../config/command-templates.json', import.meta.url), 'utf8')).templates;
+    const real = createCommandBuilder(pinned);
+    const calls = [];
+    const built = [];
+    // Build each command from the pinned templates and record it, then run a passing stub
+    // instead of the real tools so this unit test does not need the testapp running.
+    const recording = {
+      build(templateId, param) {
+        calls.push([templateId, param]);
+        built.push({ templateId, args: real.build(templateId, param).args });
+        return createCommandBuilder([tpl(templateId, PASS)]).build(templateId);
+      },
+    };
+    const engine = createVerificationEngine({ caller: 'orchestrator', commandBuilder: recording, storage, writeRawOutput, cwd: tmp });
+    await engine.verify(incident, evidence('button'));
+    expect(calls).toEqual([['Health_Check', 'button'], ['Vitest', undefined], ['Playwright', undefined]]);
+    const argsOf = (id) => built.find((b) => b.templateId === id).args;
+    expect(argsOf('Health_Check')).toContain('button');
+    expect(argsOf('Vitest')).not.toContain('button');
+    expect(argsOf('Playwright')).not.toContain('button');
+  });
+
   it('refuses to be created for any caller other than the orchestrator', () => {
     for (const caller of ['exorcist', 'repair-executor', 'poltergeist', undefined, '']) {
       expect(() => createVerificationEngine({

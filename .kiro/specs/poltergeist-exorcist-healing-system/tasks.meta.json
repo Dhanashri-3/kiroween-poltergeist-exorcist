@@ -83,6 +83,22 @@
     "10.9 Write property test for repair source selection": {
       "status": "passed",
       "lastRunTimestamp": 1795339946832
+    },
+    "11.2 Write property test for retry budget bound": {
+      "status": "passed",
+      "lastRunTimestamp": 1795355178742
+    },
+    "11.4 Write property test for rejection does not execute": {
+      "status": "passed",
+      "lastRunTimestamp": 1795355362115
+    },
+    "11.5 Write property test for rollback failure escalates": {
+      "status": "passed",
+      "lastRunTimestamp": 1795356408301
+    },
+    "11.6 Write property test for rule-based plan rejection escalates": {
+      "status": "passed",
+      "lastRunTimestamp": 1795356895084
     }
   },
   "executionHistory": {
@@ -889,6 +905,97 @@
         "executionId": "4af880f2-b52e-4abd-8004-78b543649f86",
         "chatSessionId": "sess_ea9fbc40-9459-43cc-a5e2-da6dae296c14",
         "timestamp": 1795340100649
+      }
+    ],
+    "11.1 Implement `decideAfterFailure`": [
+      {
+        "executionId": "6af2d652-86b6-4b9e-a1d8-9d7ca5c12b71",
+        "chatSessionId": "sess_03ad0bcc-3135-4f14-9f9c-20272d9f551f",
+        "timestamp": 1795353392762
+      },
+      {
+        "executionId": "6af2d652-86b6-4b9e-a1d8-9d7ca5c12b71",
+        "chatSessionId": "sess_03ad0bcc-3135-4f14-9f9c-20272d9f551f",
+        "timestamp": 1795353493000
+      }
+    ],
+    "11.3 Implement the cycle controller": [
+      {
+        "executionId": "0a198c63-0350-4f95-9a47-aa0c8cab5733",
+        "chatSessionId": "sess_3d8bcc8f-a1d6-4d74-acae-2ac73f8af5f3",
+        "timestamp": 1795353570770
+      },
+      {
+        "executionId": "0a198c63-0350-4f95-9a47-aa0c8cab5733",
+        "chatSessionId": "sess_3d8bcc8f-a1d6-4d74-acae-2ac73f8af5f3",
+        "timestamp": 1795354584447
+      }
+    ],
+    "11.2 Write property test for retry budget bound": [
+      {
+        "executionId": "8888e133-98f7-457f-af8f-f9c84f1f1d75",
+        "chatSessionId": "sess_826c3ac8-595d-4653-a0a9-a599e7b87cf5",
+        "timestamp": 1795354598770
+      },
+      {
+        "executionId": "8888e133-98f7-457f-af8f-f9c84f1f1d75",
+        "chatSessionId": "sess_826c3ac8-595d-4653-a0a9-a599e7b87cf5",
+        "timestamp": 1795355189327
+      }
+    ],
+    "11.4 Write property test for rejection does not execute": [
+      {
+        "executionId": "6b16807a-7ca6-45b7-a811-3317b1483a25",
+        "chatSessionId": "sess_bce50bdc-fe2e-4681-ab63-acd9a9aee9b7",
+        "timestamp": 1795355200681
+      },
+      {
+        "executionId": "6b16807a-7ca6-45b7-a811-3317b1483a25",
+        "chatSessionId": "sess_bce50bdc-fe2e-4681-ab63-acd9a9aee9b7",
+        "timestamp": 1795355371479
+      }
+    ],
+    "11.5 Write property test for rollback failure escalates": [
+      {
+        "executionId": "8bc9d2bb-7d0d-4956-825d-bfcb12d4fbe9",
+        "chatSessionId": "sess_162a014d-5cc7-4456-bdd7-20eb0efb728d",
+        "timestamp": 1795355382708
+      },
+      {
+        "executionId": "8bc9d2bb-7d0d-4956-825d-bfcb12d4fbe9",
+        "chatSessionId": "sess_162a014d-5cc7-4456-bdd7-20eb0efb728d",
+        "timestamp": 1795356420126
+      }
+    ],
+    "11.6 Write property test for rule-based plan rejection escalates": [
+      {
+        "executionId": "ef67971b-a144-4951-aba3-8e6a5932314b",
+        "chatSessionId": "sess_37004555-74d1-451b-b09f-d77b66fd0798",
+        "timestamp": 1795356432013
+      },
+      {
+        "executionId": "ef67971b-a144-4951-aba3-8e6a5932314b",
+        "chatSessionId": "sess_37004555-74d1-451b-b09f-d77b66fd0798",
+        "timestamp": 1795356905458
+      }
+    ],
+    "11.7 Write integration tests with a stubbed Exorcist": [
+      {
+        "executionId": "8d33cfae-dd4f-4236-81d1-3b7688ed8431",
+        "chatSessionId": "sess_60a7263f-05da-4338-8d1a-9a8ad0bac420",
+        "timestamp": 1795356919542
+      },
+      {
+        "executionId": "9f97e403-b092-4773-834a-3fd69a0dc3f2",
+        "chatSessionId": "sess_60a7263f-05da-4338-8d1a-9a8ad0bac420",
+        "timestamp": 1795359826862
+      }
+    ],
+    "11. Orchestrator cycle controller": [
+      {
+        "executionId": "9f97e403-b092-4773-834a-3fd69a0dc3f2",
+        "chatSessionId": "sess_60a7263f-05da-4338-8d1a-9a8ad0bac420",
+        "timestamp": 1795359827035
       }
     ]
   }

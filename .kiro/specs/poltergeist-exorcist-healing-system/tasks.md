@@ -297,16 +297,16 @@ Steering constraints that apply to every task:
     - Record the `battle_result` Event at the terminal state; no file or shell access and no access to Exorcist interfaces
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7_
 
-- [ ] 11. Orchestrator cycle controller
-  - [ ] 11.1 Implement `decideAfterFailure`
+- [x] 11. Orchestrator cycle controller
+  - [x] 11.1 Implement `decideAfterFailure`
     - Pure function of attempt count and cause (failed verification, rejected plan, rejected diagnosis, apply error) returning `retry` or `rollbackAndEscalate` with a Retry_Budget of 3
     - _Requirements: 7.8, 8.6, 9.8, 12.1, 12.2, 12.5_
 
-  - [ ]* 11.2 Write property test for retry budget bound
+  - [x] 11.2 Write property test for retry budget bound
     - **Property 20: Retry budget bound**
     - **Validates: Requirements 12.1, 12.2, 12.5, 12.7**
 
-  - [ ] 11.3 Implement the cycle controller
+  - [x] 11.3 Implement the cycle controller
     - Drive `detected` through `investigating`, `planned`, `repairing`, `verifying` to a terminal state, recording each stage Event before the next stage begins
     - Apply the 60 second Diagnosis timeout, call the Safety_Gate before the executor, move to `repairing` before apply and to `verifying` after completion
     - After a failed verification or rejected step: rollback, verify restored checksums equal the snapshot, pass through `rolled_back`, then retry or escalate, recording rollback evidence
@@ -316,19 +316,19 @@ Steering constraints that apply to every task:
     - Provide `startChaosRun(scenarioId?)` returning a conflict while an Incident is non-terminal
     - _Requirements: 7.7, 8.4, 9.8, 10.6, 10.10, 11.7, 11.9, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.9, 12.10, 14.8, 16.1, 16.2, 16.4, 16.5, 16.7, 16.11, 17.8, 20.7_
 
-  - [ ]* 11.4 Write property test for rejection does not execute
+  - [x] 11.4 Write property test for rejection does not execute
     - **Property 15: Rejection does not execute**
     - **Validates: Requirements 9.8**
 
-  - [ ]* 11.5 Write property test for rollback failure escalates
+  - [x] 11.5 Write property test for rollback failure escalates
     - **Property 21: Rollback failure escalates**
     - **Validates: Requirements 12.4, 12.6**
 
-  - [ ]* 11.6 Write property test for rule-based plan rejection escalates
+  - [x] 11.6 Write property test for rule-based plan rejection escalates
     - **Property 32: Rule-based plan rejection escalates**
     - **Validates: Requirements 16.11**
 
-  - [ ]* 11.7 Write integration tests with a stubbed Exorcist
+  - [x] 11.7 Write integration tests with a stubbed Exorcist
     - Fixed correct plan for each of the six Scenarios ends in `recovered` with a stored pass result
     - Incorrect plan: confirm Rollback, at most three attempts and escalation
     - Cosmetic plan (change message text or hide the component): Verification fails and the Incident is never `recovered`

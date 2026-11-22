@@ -1,0 +1,500 @@
+﻿
+ RUN  v2.1.9 C:/Users/spsdh/OneDrive/Desktop/My File/kiroween-poltergeist-exorcist/backend
+
+ Γ£ô tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > loads the six-scenario catalog
+stdout | tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > button-failure
+button-failure [component button; detections button/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]
+
+ ├ù tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > button-failure 3401ms
+   ΓåÆ button-failure [component button; detections button/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+stdout | tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > layout-corruption
+layout-corruption [component layout; detections layout/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]
+
+ ├ù tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > layout-corruption 2812ms
+   ΓåÆ layout-corruption [component layout; detections layout/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+stdout | tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > component-disappearance
+component-disappearance [component card; detections card/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]
+
+ ├ù tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > component-disappearance 2548ms
+   ΓåÆ component-disappearance [component card; detections card/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+stdout | tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > api-failure
+api-failure [component dataPanel; detections dataPanel/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:fail,playwright:fail]
+
+ ├ù tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > api-failure 1965ms
+   ΓåÆ api-failure [component dataPanel; detections dataPanel/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:fail,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+stdout | tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > styling-failure
+styling-failure [component button; detections button/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]
+
+ ├ù tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > styling-failure 2657ms
+   ΓåÆ styling-failure [component button; detections button/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+stdout | tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > loading-failure
+loading-failure [component dataPanel; detections dataPanel/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:fail,playwright:fail]
+
+ ├ù tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a fixed correct plan ends in recovered with a stored pass Verification_Result (19.5) > loading-failure 1904ms
+   ΓåÆ loading-failure [component dataPanel; detections dataPanel/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:fail,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+stdout | tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > an incorrect plan is rolled back, tried at most three times, then escalated (19.6)
+layout-corruption [component layout; detections layout/failure]: escalated (retry_budget_exhausted); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>escalated; verifications=fail[health:fail,vitest:fail,playwright:fail] fail[health:fail,vitest:fail,playwright:fail] fail[health:fail,vitest:fail,playwright:fail]
+
+ Γ£ô tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > an incorrect plan is rolled back, tried at most three times, then escalated (19.6) 6854ms
+stdout | tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a cosmetic plan (message text or hiding the component) fails verification and is never recovered (19.7) > button-failure
+button-failure [component button; detections button/failure]: escalated (retry_budget_exhausted); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>escalated; verifications=fail[health:pass,vitest:fail,playwright:fail] fail[health:fail,vitest:fail,playwright:fail] fail[health:pass,vitest:fail,playwright:fail]
+--- button-failure health:button#1
+check: health:button
+command: node 3 args
+status: exit
+exitCode: 0
+--- output ---
+ok
+
+--- button-failure vitest:button#1
+ 1 times"
+Received: "Clicked 2 times"
+
+ Γ¥» tests/button.test.js:16:50
+     14|     button.mount(doc);
+     15|     doc.els['test-button'].click();
+     16|     expect(doc.els['button-output'].textContent).toBe('Clicked 1 timesΓÇª
+       |                                                  ^
+     17|     doc.els['test-button'].click();
+     18|     doc.els['test-button'].click();
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/1]ΓÄ»
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  20:05:37
+   Duration  519ms (transform 30ms, setup 0ms, collect 22ms, tests 9ms, environment 0ms, prepare 210ms)
+
+
+--- button-failure playwright:button#1
+check: playwright:button
+command: node 5 args
+status: exit
+exitCode: 1
+--- output ---
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+
+
+--- button-failure health:button#2
+check: health:button
+command: node 3 args
+status: exit
+exitCode: 1
+--- output ---
+overall status is degraded
+
+--- button-failure vitest:button#2
+and styled by a #test-button rule that keeps it visible
+AssertionError: expected 'none' not to be 'none' // Object.is equality
+ Γ¥» tests/button.test.js:31:30
+     29|     expect(rule.padding).toBeTruthy();
+     30|     expect(rule.background).toBeTruthy();
+     31|     expect(rule.display).not.toBe('none');
+       |                              ^
+     32|   });
+     33| });
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/2]ΓÄ»
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  20:05:39
+   Duration  615ms (transform 44ms, setup 0ms, collect 42ms, tests 15ms, environment 0ms, prepare 284ms)
+
+
+--- button-failure playwright:button#2
+check: playwright:button
+command: node 5 args
+status: exit
+exitCode: 1
+--- output ---
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+
+
+--- button-failure health:button#3
+check: health:button
+command: node 3 args
+status: exit
+exitCode: 0
+--- output ---
+ok
+
+--- button-failure vitest:button#3
+1 times"
+Received: "Clicked 2 times"
+
+ Γ¥» tests/button.test.js:16:50
+     14|     button.mount(doc);
+     15|     doc.els['test-button'].click();
+     16|     expect(doc.els['button-output'].textContent).toBe('Clicked 1 timesΓÇª
+       |                                                  ^
+     17|     doc.els['test-button'].click();
+     18|     doc.els['test-button'].click();
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/1]ΓÄ»
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  20:05:42
+   Duration  537ms (transform 25ms, setup 0ms, collect 22ms, tests 11ms, environment 0ms, prepare 176ms)
+
+
+--- button-failure playwright:button#3
+check: playwright:button
+command: node 5 args
+status: exit
+exitCode: 1
+--- output ---
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+
+
+
+ Γ£ô tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a cosmetic plan (message text or hiding the component) fails verification and is never recovered (19.7) > button-failure 6955ms
+stdout | tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a cosmetic plan (message text or hiding the component) fails verification and is never recovered (19.7) > layout-corruption
+layout-corruption [component layout; detections layout/failure]: escalated (retry_budget_exhausted); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>escalated; verifications=fail[health:fail,vitest:fail,playwright:fail] fail[health:fail,vitest:fail,playwright:fail] fail[health:fail,vitest:fail,playwright:fail]
+--- layout-corruption health:layout#1
+check: health:layout
+command: node 3 args
+status: exit
+exitCode: 1
+--- output ---
+overall status is degraded
+
+--- layout-corruption vitest:layout#1
+n > is not hidden
+AssertionError: expected 'none' not to be 'none' // Object.is equality
+ Γ¥» tests/layout.test.js:22:30
+     20|     const rule = cssRule(readPublic('layout.css'), '.layout-section');
+     21|     expect(rule.visibility).not.toBe('hidden');
+     22|     expect(rule.display).not.toBe('none');
+       |                              ^
+     23|   });
+     24| });
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/2]ΓÄ»
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  20:05:44
+   Duration  527ms (transform 35ms, setup 0ms, collect 24ms, tests 10ms, environment 0ms, prepare 226ms)
+
+
+--- layout-corruption playwright:layout#1
+check: playwright:layout
+command: node 5 args
+status: exit
+exitCode: 1
+--- output ---
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+
+
+--- layout-corruption health:layout#2
+check: health:layout
+command: node 3 args
+status: exit
+exitCode: 1
+--- output ---
+overall status is degraded
+
+--- layout-corruption vitest:layout#2
+: expected 'hidden' not to be 'hidden' // Object.is equality
+ Γ¥» tests/layout.test.js:21:33
+     19|   it('is not hidden', () => {
+     20|     const rule = cssRule(readPublic('layout.css'), '.layout-section');
+     21|     expect(rule.visibility).not.toBe('hidden');
+       |                                 ^
+     22|     expect(rule.display).not.toBe('none');
+     23|   });
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/2]ΓÄ»
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Start at  20:05:46
+   Duration  521ms (transform 27ms, setup 0ms, collect 21ms, tests 9ms, environment 0ms, prepare 208ms)
+
+
+--- layout-corruption playwright:layout#2
+check: playwright:layout
+command: node 5 args
+status: exit
+exitCode: 1
+--- output ---
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+
+
+--- layout-corruption health:layout#3
+check: health:layout
+command: node 3 args
+status: exit
+exitCode: 1
+--- output ---
+overall status is degraded
+
+--- layout-corruption vitest:layout#3
+"
+Received: "inline"
+
+ Γ¥» tests/layout.test.js:13:26
+     11|     const rule = cssRule(readPublic('layout.css'), '.layout-section');
+     12|     expect(rule).not.toBeNull();
+     13|     expect(rule.display).toBe('grid');
+       |                          ^
+     14|     expect(rule['grid-template-columns']).toBe('1fr 1fr');
+     15|     expect(rule.gap).toMatch(/^\d+px$/);
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/1]ΓÄ»
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  20:05:48
+   Duration  543ms (transform 32ms, setup 0ms, collect 22ms, tests 13ms, environment 0ms, prepare 228ms)
+
+
+--- layout-corruption playwright:layout#3
+check: playwright:layout
+command: node 5 args
+status: exit
+exitCode: 1
+--- output ---
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+You may need to escape symbols like "$" or "*" and quote the arguments.
+
+
+
+ Γ£ô tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > a cosmetic plan (message text or hiding the component) fails verification and is never recovered (19.7) > layout-corruption 6654ms
+stdout | tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > stops the cycle and rolls back when the Event_Log becomes unwritable (14.8)
+button-failure [component button; detections button/failure]: escalated (event_log_write_failure); states=detected>investigating>planned>repairing; verifications=
+
+ Γ£ô tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > stops the cycle and rolls back when the Event_Log becomes unwritable (14.8)
+ Γ£ô tests/healing-cycle.integration.test.js > healing cycle with a stubbed Exorcist (real everything else) > every Scenario ends in recovered or escalated only, never in an intermediate state
+
+node : ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ» Failed Tests 6 ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+At line:1 char:105
++ ... _COLOR='1'; node node_modules/vitest/vitest.mjs run tests/healing-cyc ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»...ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ» 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+ FAIL  tests/healing-cycle.integration.test.js > healing cycle with a stubbed 
+Exorcist (real everything else) > a fixed correct plan ends in recovered with 
+a stored pass Verification_Result (19.5) > button-failure
+AssertionError: button-failure [component button; detections button/failure]: 
+escalated (no_repair_source); states=detected>investigating>planned>repairing>v
+erifying>rolled_back>investigating>escalated; 
+verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { 
+outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+-   "outcome": "recovered",
+-   "state": "recovered",
++   "outcome": "escalated",
++   "state": "escalated",
+  }
+
+ Γ¥» tests/healing-cycle.integration.test.js:407:42
+    405|       const run = await correctRun(scenarioId);
+    406| 
+    407|       expect(run.result, summarize(run)).toMatchObject({ outcome: 
+'recΓÇª
+       |                                          ^
+    408|       expect(run.incident.state).toBe('recovered');
+    409|       expect(run.transitions).toEqual(['detected', 'investigating', 
+'pΓÇª
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/6]ΓÄ
+»
+
+ FAIL  tests/healing-cycle.integration.test.js > healing cycle with a stubbed 
+Exorcist (real everything else) > a fixed correct plan ends in recovered with 
+a stored pass Verification_Result (19.5) > layout-corruption
+AssertionError: layout-corruption [component layout; detections 
+layout/failure]: escalated (no_repair_source); states=detected>investigating>pl
+anned>repairing>verifying>rolled_back>investigating>escalated; 
+verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { 
+outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+-   "outcome": "recovered",
+-   "state": "recovered",
++   "outcome": "escalated",
++   "state": "escalated",
+  }
+
+ Γ¥» tests/healing-cycle.integration.test.js:407:42
+    405|       const run = await correctRun(scenarioId);
+    406| 
+    407|       expect(run.result, summarize(run)).toMatchObject({ outcome: 
+'recΓÇª
+       |                                          ^
+    408|       expect(run.incident.state).toBe('recovered');
+    409|       expect(run.transitions).toEqual(['detected', 'investigating', 
+'pΓÇª
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/6]ΓÄ
+»
+
+ FAIL  tests/healing-cycle.integration.test.js > healing cycle with a stubbed 
+Exorcist (real everything else) > a fixed correct plan ends in recovered with 
+a stored pass Verification_Result (19.5) > component-disappearance
+AssertionError: component-disappearance [component card; detections 
+card/failure]: escalated (no_repair_source); states=detected>investigating>plan
+ned>repairing>verifying>rolled_back>investigating>escalated; 
+verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { 
+outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+-   "outcome": "recovered",
+-   "state": "recovered",
++   "outcome": "escalated",
++   "state": "escalated",
+  }
+
+ Γ¥» tests/healing-cycle.integration.test.js:407:42
+    405|       const run = await correctRun(scenarioId);
+    406| 
+    407|       expect(run.result, summarize(run)).toMatchObject({ outcome: 
+'recΓÇª
+       |                                          ^
+    408|       expect(run.incident.state).toBe('recovered');
+    409|       expect(run.transitions).toEqual(['detected', 'investigating', 
+'pΓÇª
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[3/6]ΓÄ
+»
+
+ FAIL  tests/healing-cycle.integration.test.js > healing cycle with a stubbed 
+Exorcist (real everything else) > a fixed correct plan ends in recovered with 
+a stored pass Verification_Result (19.5) > api-failure
+AssertionError: api-failure [component dataPanel; detections 
+dataPanel/failure]: escalated (no_repair_source); states=detected>investigating
+>planned>repairing>verifying>rolled_back>investigating>escalated; 
+verifications=fail[health:pass,vitest:fail,playwright:fail]: expected { 
+outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+-   "outcome": "recovered",
+-   "state": "recovered",
++   "outcome": "escalated",
++   "state": "escalated",
+  }
+
+ Γ¥» tests/healing-cycle.integration.test.js:407:42
+    405|       const run = await correctRun(scenarioId);
+    406| 
+    407|       expect(run.result, summarize(run)).toMatchObject({ outcome: 
+'recΓÇª
+       |                                          ^
+    408|       expect(run.incident.state).toBe('recovered');
+    409|       expect(run.transitions).toEqual(['detected', 'investigating', 
+'pΓÇª
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[4/6]ΓÄ
+»
+
+ FAIL  tests/healing-cycle.integration.test.js > healing cycle with a stubbed 
+Exorcist (real everything else) > a fixed correct plan ends in recovered with 
+a stored pass Verification_Result (19.5) > styling-failure
+AssertionError: styling-failure [component button; detections button/failure]: 
+escalated (no_repair_source); states=detected>investigating>planned>repairing>v
+erifying>rolled_back>investigating>escalated; 
+verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { 
+outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+-   "outcome": "recovered",
+-   "state": "recovered",
++   "outcome": "escalated",
++   "state": "escalated",
+  }
+
+ Γ¥» tests/healing-cycle.integration.test.js:407:42
+    405|       const run = await correctRun(scenarioId);
+    406| 
+    407|       expect(run.result, summarize(run)).toMatchObject({ outcome: 
+'recΓÇª
+       |                                          ^
+    408|       expect(run.incident.state).toBe('recovered');
+    409|       expect(run.transitions).toEqual(['detected', 'investigating', 
+'pΓÇª
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[5/6]ΓÄ
+»
+
+ FAIL  tests/healing-cycle.integration.test.js > healing cycle with a stubbed 
+Exorcist (real everything else) > a fixed correct plan ends in recovered with 
+a stored pass Verification_Result (19.5) > loading-failure
+AssertionError: loading-failure [component dataPanel; detections 
+dataPanel/failure]: escalated (no_repair_source); states=detected>investigating
+>planned>repairing>verifying>rolled_back>investigating>escalated; 
+verifications=fail[health:pass,vitest:fail,playwright:fail]: expected { 
+outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+(3 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+-   "outcome": "recovered",
+-   "state": "recovered",
++   "outcome": "escalated",
++   "state": "escalated",
+  }
+
+ Γ¥» tests/healing-cycle.integration.test.js:407:42
+    405|       const run = await correctRun(scenarioId);
+    406| 
+    407|       expect(run.result, summarize(run)).toMatchObject({ outcome: 
+'recΓÇª
+       |                                          ^
+    408|       expect(run.incident.state).toBe('recovered');
+    409|       expect(run.transitions).toEqual(['detected', 'investigating', 
+'pΓÇª
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[6/6]ΓÄ
+»
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 6 passed (12)
+   Start at  20:05:13
+   Duration  37.31s (transform 227ms, setup 0ms, collect 553ms, tests 35.96s, environment 0ms, prepare 223ms)
+

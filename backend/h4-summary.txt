@@ -1,0 +1,104 @@
+﻿[90mstdout[2m | tests/healing-cycle.integration.test.js[2m > [22m[2mhealing cycle with a stubbed Exorcist (real everything else)[2m > [22m[2ma fixed correct plan ends in recovered with a stored pass Verification_Result (19.5)[2m > [22m[2mbutton-failure
+[22m[39mbutton-failure [component button; detections button/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]
+[22m[39mlayout-corruption [component layout; detections layout/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]
+[22m[39mcomponent-disappearance [component card; detections card/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]
+[90mstdout[2m | tests/healing-cycle.integration.test.js[2m > [22m[2mhealing cycle with a stubbed Exorcist (real everything else)[2m > [22m[2ma fixed correct plan ends in recovered with a stored pass Verification_Result (19.5)[2m > [22m[2mapi-failure
+[22m[39mapi-failure [component dataPanel; detections dataPanel/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:fail,playwright:fail]
+[90mstdout[2m | tests/healing-cycle.integration.test.js[2m > [22m[2mhealing cycle with a stubbed Exorcist (real everything else)[2m > [22m[2ma fixed correct plan ends in recovered with a stored pass Verification_Result (19.5)[2m > [22m[2mstyling-failure
+[22m[39mstyling-failure [component button; detections button/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]
+[90mstdout[2m | tests/healing-cycle.integration.test.js[2m > [22m[2mhealing cycle with a stubbed Exorcist (real everything else)[2m > [22m[2ma fixed correct plan ends in recovered with a stored pass Verification_Result (19.5)[2m > [22m[2mloading-failure
+[22m[39mloading-failure [component dataPanel; detections dataPanel/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:fail,playwright:fail]
+[22m[39mlayout-corruption [component layout; detections layout/failure]: escalated (retry_budget_exhausted); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>escalated; verifications=fail[health:fail,vitest:fail,playwright:fail] fail[health:fail,vitest:fail,playwright:fail] fail[health:fail,vitest:fail,playwright:fail]
+[90mstdout[2m | tests/healing-cycle.integration.test.js[2m > [22m[2mhealing cycle with a stubbed Exorcist (real everything else)[2m > [22m[2ma cosmetic plan (message text or hiding the component) fails verification and is never recovered (19.7)[2m > [22m[2mbutton-failure
+[22m[39mbutton-failure [component button; detections button/failure]: escalated (retry_budget_exhausted); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>escalated; verifications=fail[health:pass,vitest:fail,playwright:fail] fail[health:fail,vitest:fail,playwright:fail] fail[health:pass,vitest:fail,playwright:fail]
+--- button-failure health:button#1
+--- button-failure vitest:button#1
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Duration  529ms (transform 32ms, setup 0ms, collect 26ms, tests 9ms, environment 0ms, prepare 217ms)
+--- button-failure playwright:button#1
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+--- button-failure health:button#2
+--- button-failure vitest:button#2
+AssertionError: expected 'none' not to be 'none' // Object.is equality
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Duration  511ms (transform 32ms, setup 0ms, collect 24ms, tests 9ms, environment 0ms, prepare 203ms)
+--- button-failure playwright:button#2
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+--- button-failure health:button#3
+--- button-failure vitest:button#3
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Duration  509ms (transform 32ms, setup 0ms, collect 25ms, tests 9ms, environment 0ms, prepare 202ms)
+--- button-failure playwright:button#3
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+[90mstdout[2m | tests/healing-cycle.integration.test.js[2m > [22m[2mhealing cycle with a stubbed Exorcist (real everything else)[2m > [22m[2ma cosmetic plan (message text or hiding the component) fails verification and is never recovered (19.7)[2m > [22m[2mlayout-corruption
+[22m[39mlayout-corruption [component layout; detections layout/failure]: escalated (retry_budget_exhausted); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>investigating>planned>repairing>verifying>rolled_back>escalated; verifications=fail[health:fail,vitest:fail,playwright:fail] fail[health:fail,vitest:fail,playwright:fail] fail[health:fail,vitest:fail,playwright:fail]
+AssertionError: expected 'none' not to be 'none' // Object.is equality
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Duration  581ms (transform 42ms, setup 0ms, collect 28ms, tests 12ms, environment 0ms, prepare 256ms)
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+ Test Files  1 failed (1)
+      Tests  2 failed | 1 passed (3)
+   Duration  560ms (transform 30ms, setup 0ms, collect 24ms, tests 9ms, environment 0ms, prepare 207ms)
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Duration  579ms (transform 32ms, setup 0ms, collect 24ms, tests 10ms, environment 0ms, prepare 237ms)
+Error: No tests found.
+Make sure that arguments are regular expressions matching test files.
+[22m[39mbutton-failure [component button; detections button/failure]: escalated (event_log_write_failure); states=detected>investigating>planned>repairing; verifications=
+ [31mΓ¥»[39m tests/healing-cycle.integration.test.js [2m([22m[2m12 tests[22m[2m | [22m[31m7 failed[39m[2m)[22m[33m 36058[2mms[22m[39m
+[31m   [31m├ù[31m healing cycle with a stubbed Exorcist (real everything else)[2m > [22ma fixed correct plan ends in recovered with a stored pass Verification_Result (19.5)[2m > [22mbutton-failure[33m 2613[2mms[22m[31m[39m
+[31m     ΓåÆ button-failure [component button; detections button/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+[31m     ΓåÆ layout-corruption [component layout; detections layout/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+[31m     ΓåÆ component-disappearance [component card; detections card/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+[31m   [31m├ù[31m healing cycle with a stubbed Exorcist (real everything else)[2m > [22ma fixed correct plan ends in recovered with a stored pass Verification_Result (19.5)[2m > [22mapi-failure[33m 1751[2mms[22m[31m[39m
+[31m     ΓåÆ api-failure [component dataPanel; detections dataPanel/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:fail,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+[31m   [31m├ù[31m healing cycle with a stubbed Exorcist (real everything else)[2m > [22ma fixed correct plan ends in recovered with a stored pass Verification_Result (19.5)[2m > [22mstyling-failure[33m 2309[2mms[22m[31m[39m
+[31m     ΓåÆ styling-failure [component button; detections button/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+[31m   [31m├ù[31m healing cycle with a stubbed Exorcist (real everything else)[2m > [22ma fixed correct plan ends in recovered with a stored pass Verification_Result (19.5)[2m > [22mloading-failure[33m 1987[2mms[22m[31m[39m
+[31m     ΓåÆ loading-failure [component dataPanel; detections dataPanel/failure]: escalated (no_repair_source); states=detected>investigating>planned>repairing>verifying>rolled_back>investigating>escalated; verifications=fail[health:pass,vitest:fail,playwright:fail]: expected { outcome: 'escalated', ΓÇª(4) } to match object { outcome: 'recovered', ΓÇª(1) }
+   [33m[2mΓ£ô[22m[39m healing cycle with a stubbed Exorcist (real everything else)[2m > [22ma cosmetic plan (message text or hiding the component) fails verification and is never recovered (19.7)[2m > [22mbutton-failure [33m7005[2mms[22m[39m
+   [33m[2mΓ£ô[22m[39m healing cycle with a stubbed Exorcist (real everything else)[2m > [22ma cosmetic plan (message text or hiding the component) fails verification and is never recovered (19.7)[2m > [22mlayout-corruption [33m7382[2mms[22m[39m
+node : [31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1m[7m Failed Tests 7 
+[31m[1m[7m FAIL [27m[22m[39m tests/healing-cycle.integration.test.js[2m 
+Verification_Result (19.5)[2m > [22mbutton-failure
+[31m[1mAssertionError[22m: button-failure [component button; detections 
+button/failure]: escalated (no_repair_source); states=detected>investigating>pl
+verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { 
+[31m[1m[7m FAIL [27m[22m[39m tests/healing-cycle.integration.test.js[2m 
+[31m[1mAssertionError[22m: layout-corruption [component layout; detections 
+layout/failure]: escalated (no_repair_source); states=detected>investigating>pl
+verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { 
+[31m[1m[7m FAIL [27m[22m[39m tests/healing-cycle.integration.test.js[2m 
+[31m[1mAssertionError[22m: component-disappearance [component card; 
+detections card/failure]: escalated (no_repair_source); states=detected>investi
+verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { 
+[31m[1m[7m FAIL [27m[22m[39m tests/healing-cycle.integration.test.js[2m 
+Verification_Result (19.5)[2m > [22mapi-failure
+[31m[1mAssertionError[22m: api-failure [component dataPanel; detections 
+dataPanel/failure]: escalated (no_repair_source); states=detected>investigating
+verifications=fail[health:pass,vitest:fail,playwright:fail]: expected { 
+[31m[1m[7m FAIL [27m[22m[39m tests/healing-cycle.integration.test.js[2m 
+Verification_Result (19.5)[2m > [22mstyling-failure
+[31m[1mAssertionError[22m: styling-failure [component button; detections 
+button/failure]: escalated (no_repair_source); states=detected>investigating>pl
+verifications=fail[health:pass,vitest:pass,playwright:fail]: expected { 
+[31m[1m[7m FAIL [27m[22m[39m tests/healing-cycle.integration.test.js[2m 
+Verification_Result (19.5)[2m > [22mloading-failure
+[31m[1mAssertionError[22m: loading-failure [component dataPanel; detections 
+dataPanel/failure]: escalated (no_repair_source); states=detected>investigating
+verifications=fail[health:pass,vitest:fail,playwright:fail]: expected { 
+[31m[1m[7m FAIL [27m[22m[39m tests/healing-cycle.integration.test.js[2m 
+[31m[1mAssertionError[22m: expected 'repairing' to be 'escalated' // 
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m7 failed[39m[22m[2m | [22m[1m[32m5 passed[39m[22m[90m (12)[39m
+[2m   Duration [22m 37.00s[2m (transform 193ms, setup 0ms, collect 412ms, tests 36.06s, environment 0ms, prepare 232ms)[22m

@@ -225,6 +225,47 @@ export class IncidentManager {
     return { ok: true };
   }
 
+  // ----- orchestrator progress ------------------------------------------------------------
+
+  /**
+   * Stored Verification_Results for one Incident, oldest first (used for escalation reports).
+   */
+  async listVerifications(incidentId) {
+    const all = await this.storage.list(VERIFICATIONS_COLLECTION);
+    return all
+      .filter((v) => v?.incidentId === incidentId)
+      .sort((a, b) => String(a.startedAt).localeCompare(String(b.startedAt)));
+  }
+
+  /**
+   * Record the Orchestrator's progress on a non-terminal Incident. Only the cycle-owned fields can be
+   * replaced; state, component and evidence are untouched. The result is validated against the
+   * Incident contract before it is stored.
+   */
+  recordProgress(incidentId, patch) {
+    return this._serial(async () => {
+      const incident = await this.get(incidentId);
+      if (!incident) {
+        await this._error(incidentId, 'progress rejected: unknown incident');
+        return rejected('unknown incident');
+      }
+      if (isTerminal(incident.state)) {
+        await this._error(incidentId, 'progress rejected: incident is terminal');
+        return rejected('incident is terminal');
+      }
+      const allowed = ['diagnosis', 'plans', 'gateDecisions', 'attempts', 'attemptCount'];
+      const keys = Object.keys(patch ?? {});
+      const bad = keys.filter((k) => !allowed.includes(k));
+      if (bad.length > 0) {
+        await this._error(incidentId, `progress rejected: unsupported field ${bad.join(', ')}`);
+        return rejected(`unsupported field ${bad.join(', ')}`);
+      }
+      const updated = { ...incident, ...patch, updatedAt: this.now().toISOString() };
+      await this._save(updated);
+      return updated;
+    });
+  }
+
   // ----- restart --------------------------------------------------------------------------
 
   /** Startup: flag Incidents left in repairing or verifying as needing rollback verification. */
