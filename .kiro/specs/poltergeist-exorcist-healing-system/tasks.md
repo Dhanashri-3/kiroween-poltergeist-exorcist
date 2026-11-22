@@ -229,23 +229,23 @@ Steering constraints that apply to every task:
     - **Property 3: Write scope and snapshot-first** (repair operations: single target, snapshot first, restore on failure)
     - **Validates: Requirements 10.2, 10.3, 10.7, 17.1, 17.7**
 
-- [ ] 9. Verification_Engine
-  - [ ] 9.1 Implement the command builder
+- [x] 9. Verification_Engine
+  - [x] 9.1 Implement the command builder
     - Build process invocations only from fixed templates in `command-templates.json`, with parameters limited to the component enum, as an executable plus argument array with no shell
     - _Requirements: 11.2, 17.5, 17.6_
 
-  - [ ]* 9.2 Write property test for fixed command templates
+  - [x] 9.2 Write property test for fixed command templates
     - **Property 33: Fixed command templates**
     - **Validates: Requirements 17.6**
 
-  - [ ] 9.3 Implement the verification runner and aggregation
+  - [x] 9.3 Implement the verification runner and aggregation
     - Run Health_Checks, Vitest and Playwright checks that cover the affected component as real processes against the running Test_App, store raw output as referenced files, and save a Verification_Result
     - Pure `aggregate(checkResults, evidence)` returns `pass` only if all checks pass, none errored or timed out, and a check covering the affected component both ran and failed in the Evidence
     - Cancel and return `fail` after 120 seconds
     - Expose the engine only to the Orchestrator
     - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.10, 11.11, 11.12, 19.8_
 
-  - [ ]* 9.4 Write property test for verification aggregation
+  - [x] 9.4 Write property test for verification aggregation
     - **Property 18: Verification aggregation**
     - **Validates: Requirements 11.3, 11.4, 11.5, 11.6**
 
