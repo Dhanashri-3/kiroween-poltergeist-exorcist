@@ -99,6 +99,10 @@
     "11.6 Write property test for rule-based plan rejection escalates": {
       "status": "passed",
       "lastRunTimestamp": 1795356895084
+    },
+    "12.2 Write property test for API input validation": {
+      "status": "passed",
+      "lastRunTimestamp": 1795454221226
     }
   },
   "executionHistory": {
@@ -996,6 +1000,102 @@
         "executionId": "9f97e403-b092-4773-834a-3fd69a0dc3f2",
         "chatSessionId": "sess_60a7263f-05da-4338-8d1a-9a8ad0bac420",
         "timestamp": 1795359827035
+      }
+    ],
+    "12.1 Implement the Express API": [
+      {
+        "executionId": "0bcafa53-f88c-4c42-bb2b-8e30617d4e84",
+        "chatSessionId": "sess_50a30c34-3384-4a0c-9249-a04ecd007bd8",
+        "timestamp": 1795361600718
+      },
+      {
+        "executionId": "f7b63aa9-a616-461a-bdd6-196ac7ca3dcc",
+        "chatSessionId": "sess_104e0b6c-8e32-46fa-9c18-18ce8c7f77de",
+        "timestamp": 1795452293627
+      },
+      {
+        "executionId": "f7b63aa9-a616-461a-bdd6-196ac7ca3dcc",
+        "chatSessionId": "sess_104e0b6c-8e32-46fa-9c18-18ce8c7f77de",
+        "timestamp": 1795452512270
+      }
+    ],
+    "12.3 Implement the SSE stream and replay": [
+      {
+        "executionId": "51ef086c-4f03-44fc-9523-c1ea919588b6",
+        "chatSessionId": "sess_e4145e1f-2f85-45a2-a850-c4e8277b9eda",
+        "timestamp": 1795452541555
+      },
+      {
+        "executionId": "51ef086c-4f03-44fc-9523-c1ea919588b6",
+        "chatSessionId": "sess_e4145e1f-2f85-45a2-a850-c4e8277b9eda",
+        "timestamp": 1795452701266
+      }
+    ],
+    "12.6 Document the API": [
+      {
+        "executionId": "76bf1a02-1714-4dd7-b833-ab00b45f5c52",
+        "chatSessionId": "sess_777363fe-9755-4aaf-9755-0ece4db29c6a",
+        "timestamp": 1795452730793
+      },
+      {
+        "executionId": "76bf1a02-1714-4dd7-b833-ab00b45f5c52",
+        "chatSessionId": "sess_777363fe-9755-4aaf-9755-0ece4db29c6a",
+        "timestamp": 1795452827394
+      }
+    ],
+    "12.2 Write property test for API input validation": [
+      {
+        "executionId": "7f725e72-a0d9-4444-b64d-7ff6d15a1395",
+        "chatSessionId": "sess_6a278d4f-71c6-4bc2-a9e5-47b58cf747dc",
+        "timestamp": 1795452851721
+      },
+      {
+        "executionId": "7f725e72-a0d9-4444-b64d-7ff6d15a1395",
+        "chatSessionId": "sess_6a278d4f-71c6-4bc2-a9e5-47b58cf747dc",
+        "timestamp": 1795454238085
+      }
+    ],
+    "12.4 Write property test for stream replay": [
+      {
+        "executionId": "000e273f-2fda-4de8-9147-7233b53e4bd6",
+        "chatSessionId": "sess_43eeb449-584c-4835-9fef-c2cfa794497f",
+        "timestamp": 1795454266067
+      },
+      {
+        "executionId": "000e273f-2fda-4de8-9147-7233b53e4bd6",
+        "chatSessionId": "sess_43eeb449-584c-4835-9fef-c2cfa794497f",
+        "timestamp": 1795454463942
+      }
+    ],
+    "12.5 Write API unit and integration tests": [
+      {
+        "executionId": "1b776b06-9df8-4f78-88c3-a3bbaced97b6",
+        "chatSessionId": "sess_0ed540f6-4940-4599-8847-bc67970329f8",
+        "timestamp": 1795454483575
+      },
+      {
+        "executionId": "1b776b06-9df8-4f78-88c3-a3bbaced97b6",
+        "chatSessionId": "sess_0ed540f6-4940-4599-8847-bc67970329f8",
+        "timestamp": 1795454652255
+      }
+    ],
+    "12. HTTP API and live event stream": [
+      {
+        "executionId": "1b776b06-9df8-4f78-88c3-a3bbaced97b6",
+        "chatSessionId": "sess_0ed540f6-4940-4599-8847-bc67970329f8",
+        "timestamp": 1795454652406
+      }
+    ],
+    "13. Checkpoint - Backend complete": [
+      {
+        "executionId": "0014e774-4533-4d58-a924-4d3002fadafb",
+        "chatSessionId": "sess_1b8830f7-ccf0-4ee0-8503-9a54dc7a41f6",
+        "timestamp": 1795454707367
+      },
+      {
+        "executionId": "7e12c176-6c9b-483f-93f5-e3dce5fc5542",
+        "chatSessionId": "sess_1b8830f7-ccf0-4ee0-8503-9a54dc7a41f6",
+        "timestamp": 1795455456938
       }
     ]
   }

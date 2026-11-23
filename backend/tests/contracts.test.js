@@ -85,6 +85,14 @@ const samples = {
     valid: { version: '1', scenarios: Array.from({ length: 6 }, () => scenarioEntry) },
     invalid: { version: '1', scenarios: [scenarioEntry] },
   },
+  ChaosRunRequest: {
+    valid: { scenarioId: 'button-failure' },
+    invalid: { scenarioId: '' },
+  },
+  ResetRequest: {
+    valid: {},
+    invalid: { force: true },
+  },
   CommandTemplatesDocument: {
     valid: { version: '1', templates: [commandTemplate] },
     invalid: { templates: [commandTemplate] },

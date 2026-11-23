@@ -336,35 +336,35 @@ Steering constraints that apply to every task:
     - Every Scenario ends in `recovered` or `escalated` only
     - _Requirements: 14.8, 16.4, 19.5, 19.6, 19.7_
 
-- [ ] 12. HTTP API and live event stream
-  - [ ] 12.1 Implement the Express API
+- [x] 12. HTTP API and live event stream
+  - [x] 12.1 Implement the Express API
     - Bind to 127.0.0.1, CORS only for the configured Dashboard origin, schema validation of every request body with HTTP 400 and no state change on failure
     - Endpoints: `GET /api/v1/health`, `GET /api/v1/scenarios` (public fields only), `POST /api/v1/chaos-runs` (409 while an Incident is non-terminal), `GET /api/v1/incidents`, `GET /api/v1/incidents/:id`, `GET /api/v1/incidents/:id/verification`, `GET /api/v1/events`, `POST /api/v1/reset`
     - Report storage errors in the health endpoint and never include Secrets in a response
     - Mount the SSE handler from 12.3
     - _Requirements: 13.1, 13.2, 13.3, 13.4, 13.5, 13.6, 14.8_
 
-  - [ ]* 12.2 Write property test for API input validation
+  - [x] 12.2 Write property test for API input validation
     - **Property 22: API input validation**
     - **Validates: Requirements 13.3**
 
-  - [ ] 12.3 Implement the SSE stream and replay
+  - [x] 12.3 Implement the SSE stream and replay
     - `GET /api/v1/events/stream` emits `id: <seq>`, honors `Last-Event-ID` and `afterSeq`, replays all greater sequence numbers in order before live Events, and delivers new Events within 1 second of persistence
     - _Requirements: 14.3, 14.4, 14.5_
 
-  - [ ]* 12.4 Write property test for stream replay
+  - [x] 12.4 Write property test for stream replay
     - **Property 26: Stream replay**
     - **Validates: Requirements 14.4**
 
-  - [ ]* 12.5 Write API unit and integration tests
+  - [x] 12.5 Write API unit and integration tests
     - CORS allows only the configured origin, 409 on start while active, refusal to start on invalid config, SSE delivery latency and reconnect replay
     - _Requirements: 13.4, 13.5, 13.7, 14.5_
 
-  - [ ] 12.6 Document the API
+  - [x] 12.6 Document the API
     - Complete `docs/api.md` (versioned) and the schema documents so the Dashboard can integrate; include request and response bodies, error format and Event types
     - _Requirements: 13.1, 20.3_
 
-- [ ] 13. Checkpoint - Backend complete
+- [x] 13. Checkpoint - Backend complete
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 14. React Dashboard

@@ -11,6 +11,7 @@ import { verificationResultSchema } from './verification-result.schema.js';
 import { actionAllowlistEntrySchema, actionAllowlistSchema } from './action-allowlist.schema.js';
 import { fallbackMappingEntrySchema } from './fallback-mapping-entry.schema.js';
 import { commandTemplateSchema } from './command-template.schema.js';
+import { chaosRunRequestSchema, resetRequestSchema } from './api-request.schema.js';
 import {
   approvedFilesDocumentSchema,
   scenarioCatalogDocumentSchema,
@@ -32,6 +33,9 @@ export const SCHEMAS = {
   ActionAllowlistEntry: actionAllowlistEntrySchema, // single entry
   FallbackMappingEntry: fallbackMappingEntrySchema,
   CommandTemplate: commandTemplateSchema,
+  // HTTP request bodies.
+  ChaosRunRequest: chaosRunRequestSchema,
+  ResetRequest: resetRequestSchema,
   // Complete configuration documents.
   ApprovedFilesDocument: approvedFilesDocumentSchema,
   ScenarioCatalogDocument: scenarioCatalogDocumentSchema,
