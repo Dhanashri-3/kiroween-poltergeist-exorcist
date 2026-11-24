@@ -367,22 +367,22 @@ Steering constraints that apply to every task:
 - [x] 13. Checkpoint - Backend complete
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 14. React Dashboard
-  - [ ] 14.1 Scaffold the frontend
+- [~] 14. React Dashboard
+  - [x] 14.1 Scaffold the frontend
     - After the team approves React and Vite in the dependency review, create the Vite React app in `frontend/` (JavaScript) with a test setup
     - Configure only the documented API base URL; no imports from `backend/`
     - _Requirements: 15.11, 20.1_
 
-  - [ ] 14.2 Implement the Dashboard reducer
+  - [x] 14.2 Implement the Dashboard reducer
     - `reduce(state, event | apiResponse) -> state` builds all UI state from Events and API responses only
     - Timeline sorted by sequence number and deduplicated, recovery shown only with a `verification` Event of `overall=pass`, `escalated` and `rolled_back` shown distinctly, no state change from a start-chaos action alone
     - _Requirements: 14.11, 15.1, 15.2, 15.3, 15.5, 15.6, 15.8, 15.12_
 
-  - [ ]* 14.3 Write property test for timeline ordering
+  - [x] 14.3 Write property test for timeline ordering
     - **Property 28: Dashboard timeline ordering**
     - **Validates: Requirements 15.2, 15.7**
 
-  - [ ]* 14.4 Write property test for outcome derived from Events
+  - [x] 14.4 Write property test for outcome derived from Events
     - **Property 29: Dashboard derives outcome from Events**
     - **Validates: Requirements 14.11, 15.5, 15.6, 15.8**
 
