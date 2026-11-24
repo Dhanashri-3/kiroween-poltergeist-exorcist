@@ -410,18 +410,18 @@ Steering constraints that apply to every task:
     - Run against the real backend and Test_App, never against canned success data
     - _Requirements: 15.8, 19.4_
 
-- [ ] 15. Wiring and documentation
-  - [ ] 15.1 Write the README run instructions
+- [x] 15. Wiring and documentation
+  - [x] 15.1 Write the README run instructions
     - Add a README section on installing, starting the Test_App, backend and frontend on a local machine, running the demo and resetting the Test_App
     - State the AI-provider variable name and the Fallback_Mapping behavior
     - _Requirements: 20.5, 13.9_
 
-  - [ ] 15.2 Create the backend entry point
+  - [x] 15.2 Create the backend entry point
     - Load and validate the configuration, start the Event_Log, Incident_Manager reload, Monitor, Scenario_Engine, Orchestrator and API in the documented order, and refuse to start on any invalid config
     - Provide an npm script for starting the backend
     - _Requirements: 6.9, 13.7, 13.8_
 
-- [ ] 16. Final checkpoint - Ensure all tests pass
+- [x] 16. Final checkpoint - Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes

@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Backend orchestration for the Poltergeist vs. Exorcist self-healing system",
   "scripts": {
+    "start": "node src/main.js",
     "test": "vitest run"
   },
   "dependencies": {
