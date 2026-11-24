@@ -1,0 +1,72 @@
+/* Dashboard styling (task 14.6). Plain CSS, dark spooky theme. Final visual design is owned by Aathavan. */
+:root {
+  --bg: #0a0814;
+  --panel: #120b24;
+  --panel-border: rgba(192, 132, 252, 0.3);
+  --ink: #f3e8ff;
+  --muted: rgba(233, 213, 255, 0.65);
+  --purple: #a855f7;
+  --cyan: #22d3ee;
+  --green: #34d399;
+  --red: #f87171;
+  --amber: #fbbf24;
+}
+
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, Arial, sans-serif; }
+
+.dashboard { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+.dashboard h1 { margin: 0 0 0.5rem; letter-spacing: 0.08em; color: #e9d5ff; }
+.dashboard h2 { margin: 0 0 0.5rem; font-size: 1.05rem; color: #d8b4fe; }
+.dashboard h3 { margin: 0.75rem 0 0.25rem; font-size: 0.95rem; color: var(--cyan); }
+
+.dashboard__header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.dashboard__grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.dashboard__wide { grid-column: 1 / -1; }
+
+.panel { background: var(--panel); border: 1px solid var(--panel-border); border-radius: 12px; padding: 0.75rem 1rem; min-width: 0; }
+.muted { color: var(--muted); }
+.mono, pre { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.8rem; }
+pre { margin: 0.25rem 0; white-space: pre-wrap; word-break: break-word; }
+ul.plain { list-style: none; margin: 0; padding: 0; }
+dl.kv { display: grid; grid-template-columns: max-content 1fr; gap: 0.15rem 0.75rem; margin: 0; }
+dl.kv dt { color: var(--muted); }
+dl.kv dd { margin: 0; word-break: break-word; }
+
+.badge { display: inline-block; padding: 0.05rem 0.5rem; border-radius: 999px; border: 1px solid currentColor; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.badge--connected, .badge--ok, .badge--recovered { color: var(--green); }
+.badge--connecting, .badge--active, .badge--degraded { color: var(--amber); }
+.badge--disconnected, .badge--closed, .badge--escalated, .badge--storage_error, .badge--unreachable { color: var(--red); }
+.badge--rolled_back { color: var(--cyan); }
+.badge--unverified_recovery_claim { color: var(--red); border-style: dashed; }
+.badge--none { color: var(--muted); }
+
+.connection--disconnected, .connection--closed { border: 1px solid var(--red); border-radius: 8px; padding: 0.15rem 0.6rem; }
+.alert { border: 1px solid var(--red); color: #fecaca; border-radius: 8px; padding: 0.4rem 0.75rem; margin: 0.5rem 0; }
+
+.outcome { border-left: 6px solid var(--muted); padding: 0.5rem 0.75rem; margin: 0.5rem 0; background: rgba(255, 255, 255, 0.03); }
+.outcome--recovered { border-left-color: var(--green); }
+.outcome--escalated { border-left-color: var(--red); background: rgba(248, 113, 113, 0.1); }
+.outcome--rolled_back { border-left-color: var(--cyan); }
+.outcome--active { border-left-color: var(--amber); }
+.outcome--unverified_recovery_claim { border-left: 6px dashed var(--red); background: rgba(248, 113, 113, 0.08); }
+.outcome--none { border-left-color: var(--muted); }
+
+.health-list, .incident-list, .timeline { max-height: 22rem; overflow: auto; }
+.timeline li { border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 0.25rem 0; }
+.timeline .row-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; }
+.incident-list button, .controls button { background: #1f1238; color: var(--ink); border: 1px solid var(--panel-border); border-radius: 8px; padding: 0.3rem 0.75rem; cursor: pointer; }
+.incident-list button[aria-current="true"] { border-color: var(--cyan); }
+.controls button:disabled { opacity: 0.5; cursor: not-allowed; }
+.controls { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.controls select { background: #1f1238; color: var(--ink); border: 1px solid var(--panel-border); border-radius: 8px; padding: 0.3rem; }
+
+.diff { border: 1px solid var(--panel-border); border-radius: 8px; overflow: auto; }
+.diff__line { display: block; }
+.diff__line--del { background: rgba(248, 113, 113, 0.18); }
+.diff__line--add { background: rgba(52, 211, 153, 0.18); }
+.dashboard h4 { margin: 0.5rem 0 0.25rem; font-size: 0.9rem; color: #d8b4fe; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 760px) {
+  .dashboard__grid { grid-template-columns: minmax(0, 1fr); }
+}

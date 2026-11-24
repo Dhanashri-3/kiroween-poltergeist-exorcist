@@ -1163,6 +1163,61 @@
         "chatSessionId": "sess_8f7b96cb-dc49-4b25-bb90-f00575e458aa",
         "timestamp": 1795526121575
       }
+    ],
+    "14.5 Implement the API client and SSE hook": [
+      {
+        "executionId": "ac32d37d-d9a4-4af9-8247-bdd77af98d96",
+        "chatSessionId": "sess_8f7b96cb-dc49-4b25-bb90-f00575e458aa",
+        "timestamp": 1795526678595
+      },
+      {
+        "executionId": "ac32d37d-d9a4-4af9-8247-bdd77af98d96",
+        "chatSessionId": "sess_8f7b96cb-dc49-4b25-bb90-f00575e458aa",
+        "timestamp": 1795527497940
+      }
+    ],
+    "14.6 Implement the Dashboard views": [
+      {
+        "executionId": "a7209157-bca4-43ad-b3f5-cd98ae795773",
+        "chatSessionId": "sess_8f7b96cb-dc49-4b25-bb90-f00575e458aa",
+        "timestamp": 1795528054547
+      },
+      {
+        "executionId": "a7209157-bca4-43ad-b3f5-cd98ae795773",
+        "chatSessionId": "sess_8f7b96cb-dc49-4b25-bb90-f00575e458aa",
+        "timestamp": 1795528374173
+      }
+    ],
+    "14.7 Implement controls and the repair diff": [
+      {
+        "executionId": "5bf73f87-b427-45f7-819d-32dae464acee",
+        "chatSessionId": "sess_8f7b96cb-dc49-4b25-bb90-f00575e458aa",
+        "timestamp": 1795528704058
+      },
+      {
+        "executionId": "5bf73f87-b427-45f7-819d-32dae464acee",
+        "chatSessionId": "sess_8f7b96cb-dc49-4b25-bb90-f00575e458aa",
+        "timestamp": 1795529084160
+      }
+    ],
+    "14.8 Add Playwright end-to-end tests": [
+      {
+        "executionId": "b02b57c1-6ef7-426f-bda6-5883dffcb34a",
+        "chatSessionId": "sess_8f7b96cb-dc49-4b25-bb90-f00575e458aa",
+        "timestamp": 1795529396463
+      },
+      {
+        "executionId": "767387df-c71d-4b09-b9a8-ecc556b99238",
+        "chatSessionId": "sess_8f7b96cb-dc49-4b25-bb90-f00575e458aa",
+        "timestamp": 1795530991373
+      }
+    ],
+    "14. React Dashboard": [
+      {
+        "executionId": "767387df-c71d-4b09-b9a8-ecc556b99238",
+        "chatSessionId": "sess_8f7b96cb-dc49-4b25-bb90-f00575e458aa",
+        "timestamp": 1795530991527
+      }
     ]
   }
 }

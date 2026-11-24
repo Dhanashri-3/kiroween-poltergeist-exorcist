@@ -1,8 +1,17 @@
+import { useReducer } from 'react';
+import { reduce, initialState } from './state/dashboardReducer.js';
+import { useEventStream } from './hooks/useEventStream.js';
+import Dashboard from './components/Dashboard.jsx';
+
 export default function App() {
+  const [state, dispatch] = useReducer(reduce, initialState);
+  const { status, error, lastSeq, startChaos, reset } = useEventStream({ dispatch });
   return (
-    <main>
-      <h1>Poltergeist vs. Exorcist</h1>
-      <p>Dashboard scaffold. Views are added in later tasks.</p>
-    </main>
+    <Dashboard
+      state={state}
+      connection={{ status, error, lastSeq }}
+      onStartChaos={startChaos}
+      onReset={reset}
+    />
   );
 }

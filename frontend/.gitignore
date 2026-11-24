@@ -1,1 +1,6 @@
 dist/
+
+# Playwright UI-contract e2e (Task 14.8)
+.e2e-dist/
+test-results/
+playwright-report/

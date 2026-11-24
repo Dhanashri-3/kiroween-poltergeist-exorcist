@@ -367,7 +367,7 @@ Steering constraints that apply to every task:
 - [x] 13. Checkpoint - Backend complete
   - Ensure all tests pass, ask the user if questions arise.
 
-- [~] 14. React Dashboard
+- [x] 14. React Dashboard
   - [x] 14.1 Scaffold the frontend
     - After the team approves React and Vite in the dependency review, create the Vite React app in `frontend/` (JavaScript) with a test setup
     - Configure only the documented API base URL; no imports from `backend/`
@@ -386,26 +386,26 @@ Steering constraints that apply to every task:
     - **Property 29: Dashboard derives outcome from Events**
     - **Validates: Requirements 14.11, 15.5, 15.6, 15.8**
 
-  - [ ] 14.5 Implement the API client and SSE hook
+  - [x] 14.5 Implement the API client and SSE hook
     - Fetch health, scenarios, incidents and events through the documented API only
     - Use `EventSource` with reconnect from the last-seen sequence number and expose a connected or disconnected flag
     - Start chaos and reset only call the API and rely on later Events for state
     - _Requirements: 15.4, 15.7, 15.8, 15.9, 15.11_
 
-  - [ ] 14.6 Implement the Dashboard views
+  - [x] 14.6 Implement the Dashboard views
     - Component health panel, live Event timeline, current Incident panel (state, component, Diagnosis, Repair_Plan, gate decision, attempt count, Verification_Result), idle state, and disconnected indicator
     - Escalation view that differs visibly from recovery and shows reason and rollback evidence
     - Past Incident viewer showing that Incident's Events and Evidence
     - Visual styling is owned by Aathavan; keep markup simple and testable
     - _Requirements: 15.1, 15.2, 15.3, 15.5, 15.6, 15.7, 15.12, 15.13_
 
-  - [ ] 14.7 Implement controls and the repair diff
+  - [x] 14.7 Implement controls and the repair diff
     - Start chaos with a chosen or random Scenario and a reset control
     - Render the repair diff from the `repair` Event content and checksums, and link the recovery panel to its Verification_Result
     - Wire into the views from 14.6 and the client from 14.5
     - _Requirements: 15.5, 15.9, 15.10_
 
-  - [ ] 14.8 Add Playwright end-to-end tests
+  - [x] 14.8 Add Playwright end-to-end tests
     - Cover the baseline healthy state, one injected failure shown on the Dashboard, one verified recovery with the Verification_Result visible, the disconnected indicator, and that start-chaos alone changes no displayed state
     - Run against the real backend and Test_App, never against canned success data
     - _Requirements: 15.8, 19.4_
