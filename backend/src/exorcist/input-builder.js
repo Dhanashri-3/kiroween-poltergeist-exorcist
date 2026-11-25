@@ -54,7 +54,8 @@ async function loadEvidence(incident, deps) {
   const list = Array.isArray(raw) ? raw : raw === undefined || raw === null ? [] : [raw];
   return list
     .filter((e) => isObject(e) && (e.incidentId === undefined || e.incidentId === incident.incidentId))
-    .map((e) => pick(e, EVIDENCE_KEYS));
+    // Evidence is captured before the Incident exists, so it may lack an incidentId; bind it to this Incident.
+    .map((e) => ({ ...pick(e, EVIDENCE_KEYS), incidentId: incident.incidentId }));
 }
 
 async function loadSources(deps) {
