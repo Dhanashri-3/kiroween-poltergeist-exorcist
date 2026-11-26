@@ -1,4 +1,5 @@
 import ThemeToggle from './ThemeToggle.jsx';
+import SoundToggle from './SoundToggle.jsx';
 import SummonControl from './SummonControl.jsx';
 
 const LINKS = [
@@ -19,8 +20,11 @@ const STREAM_LABELS = {
  * Pill navigation. Section links are plain anchors (user-initiated scrolling only). The stream chip shows
  * the genuine connection status passed in and is hidden when none is passed. It is not a live region: the
  * Dashboard's ConnectionStatus already announces changes.
+ *
+ * `sound` (Phase 4B.4B) is optional: { on, busy, available, note, onToggle } for SoundToggle. Without it no
+ * Sound control renders, so the navigation and its focus order stay exactly as before.
  */
-export default function FloatingNav({ theme, onToggleTheme, connectionStatus, summon = {} }) {
+export default function FloatingNav({ theme, onToggleTheme, connectionStatus, summon = {}, sound = null }) {
   const stream = STREAM_LABELS[connectionStatus] ?? null;
   return (
     <nav className="so-nav" aria-label="SpecterOps">
@@ -36,6 +40,7 @@ export default function FloatingNav({ theme, onToggleTheme, connectionStatus, su
         </span>
       ) : null}
       <ThemeToggle theme={theme} onToggle={onToggleTheme} />
+      {sound ? <SoundToggle {...sound} /> : null}
       <SummonControl {...summon} />
     </nav>
   );

@@ -42,6 +42,18 @@ const SHAPES = {
     </>
   ),
   moon: <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />,
+  speaker: (
+    <>
+      <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
+      <path d="M15.5 9a4.2 4.2 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11" />
+    </>
+  ),
+  speakerOff: (
+    <>
+      <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
+      <path d="M16 9.5l5 5M21 9.5l-5 5" />
+    </>
+  ),
   terminal: <path d="M4 17l6-6-6-6M12 19h8" />,
   chevronUp: <path d="M18 15l-6-6-6 6" />,
   chevronDown: <path d="M6 9l6 6 6-6" />,

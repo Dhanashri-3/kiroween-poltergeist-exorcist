@@ -33,6 +33,7 @@ export const CATCH_THRESHOLD = 0.75;
  *   animateChanges    true once live Events flow (history renders in steady state)
  *   logLines          from state/agentLog.js buildLogLines()
  *   summon            { onSummon, busy, disabled, notice, error } for SummonControl
+ *   sound             optional { on, busy, available, note, onToggle } for SoundToggle (omit = no Sound control)
  *   defaultTheme      'dark' (default) | 'light'
  */
 export default function SpecterOpsShell({
@@ -45,6 +46,7 @@ export default function SpecterOpsShell({
   animateChanges = false,
   logLines = [],
   summon = {},
+  sound = null,
   defaultTheme = 'dark',
 }) {
   const rootRef = useRef(null);
@@ -57,7 +59,7 @@ export default function SpecterOpsShell({
 
   const nav = (
     <FloatingNav theme={theme} onToggleTheme={() => setTheme((t) => (t === 'light' ? 'dark' : 'light'))}
-      connectionStatus={connectionStatus} summon={summon} />
+      connectionStatus={connectionStatus} summon={summon} sound={sound} />
   );
 
   return (

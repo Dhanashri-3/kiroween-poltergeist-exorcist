@@ -150,6 +150,40 @@
 .specterops-shell .so-iconbtn:hover { border-color: var(--so-panel-border-hot); }
 .specterops-shell .so-theme-toggle[aria-pressed='true'] { border-color: var(--so-panel-border-hot); }
 
+/* ---- sound toggle (Phase 4B.4B): same .so-iconbtn button ----------------------------------------------------
+ * The note is positioned against the sticky nav (its containing block), right-aligned below it, where the summon
+ * feedback also sits. While a note is shown the summon feedback moves down by the note's fixed height, so the two
+ * never overlap, in the one-row layout or the wrapped mobile layout (Phase 4B.4C.1). */
+.specterops-shell { --so-sound-note-h: 2.25rem; }
+.specterops-shell .so-sound { display: inline-flex; }
+.specterops-shell .so-sound-toggle[aria-pressed='true'] { border-color: var(--so-panel-border-hot); color: var(--so-ok); }
+.specterops-shell .so-sound__note {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0.4rem;
+  width: max-content;
+  max-width: calc(100% - 0.8rem);
+}
+.specterops-shell .so-sound .so-sound__msg { line-height: calc(var(--so-sound-note-h) - 2px); }
+.specterops-shell .so-nav:has(.so-sound__msg) .so-summon__feedback {
+  top: calc(100% + var(--so-sound-note-h) + 1.5rem);
+}
+.specterops-shell .so-sound__msg {
+  display: block;
+  box-sizing: border-box;
+  height: var(--so-sound-note-h);
+  padding: 0 0.75rem;
+  white-space: nowrap;
+  border: 1px solid var(--so-panel-border);
+  border-radius: 0.75rem;
+  background: var(--so-panel-strong);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--so-ink);
+}
+
 /* ---- summon control ------------------------------------------------------------------------ */
 .specterops-shell .so-summon { position: relative; display: flex; flex-direction: column; align-items: flex-end; }
 .specterops-shell .so-summon__btn {

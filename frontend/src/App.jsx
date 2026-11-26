@@ -9,8 +9,18 @@ import { useLiveRefresh } from './specterops/hooks/useLiveRefresh.js';
 import { useHistoryWatermark } from './specterops/hooks/useHistoryWatermark.js';
 import { buildLogLines } from './specterops/state/agentLog.js';
 import { deriveLiveEffects } from './specterops/state/liveEffects.js';
+import { createSoundEngine } from './specterops/soundEngine.js';
+import { useSoundCues } from './specterops/hooks/useSoundCues.js';
 
 export const SUMMON_IDLE_NOTICE = 'Summon starts a random scenario.';
+
+/** Short explanations shown when sound cannot start. Sound stays off in every case. */
+export const SOUND_NOTES = Object.freeze({
+  unavailable: 'Sound is not supported in this browser.',
+  blocked: 'The browser blocked audio. Sound stays off.',
+  error: 'Audio could not start. Sound stays off.',
+});
+const SOUND_OFF = Object.freeze({ on: false, busy: false, note: null });
 const MAX_CLIENT_NOTES = 20;
 const NO_EVENTS = Object.freeze([]);
 
@@ -112,6 +122,39 @@ export default function App() {
     );
   }, [guardedStartChaos]);
 
+  // Sound (Phase 4B.4B): off on every load, never persisted. The engine object holds no AudioContext until the
+  // Sound toggle is clicked; unmount (including StrictMode's simulated one) disposes it and turns sound off.
+  const soundEngineRef = useRef(null);
+  if (soundEngineRef.current === null) soundEngineRef.current = createSoundEngine();
+  const soundEngine = soundEngineRef.current;
+  const [sound, setSound] = useState(SOUND_OFF);
+  const soundUnlocking = useRef(false);
+  useEffect(() => () => {
+    soundUnlocking.current = false;
+    soundEngine.dispose();
+    setSound(SOUND_OFF);
+  }, [soundEngine]);
+  const soundOn = sound.on;
+  const onToggleSound = useCallback(() => {
+    if (soundOn) {
+      soundEngine.mute();
+      setSound(SOUND_OFF);
+      return;
+    }
+    if (soundUnlocking.current) return;
+    soundUnlocking.current = true;
+    setSound({ on: false, busy: true, note: null });
+    // unlock() creates and resumes the AudioContext synchronously, inside this click.
+    soundEngine.unlock().then((result) => {
+      soundUnlocking.current = false;
+      if (!mounted.current) return;
+      if (result?.ok) setSound({ on: true, busy: false, note: null });
+      else setSound({ on: false, busy: false, note: SOUND_NOTES[result?.reason] ?? null });
+    });
+  }, [soundOn, soundEngine]);
+  const outcomeFor = useCallback((id) => selectIncidentOutcome(state, id), [state]);
+  useSoundCues({ events: state.events, watermark, outcomeFor, engine: soundEngine, enabled: soundOn });
+
   return (
     <SpecterOpsShell
       connectionStatus={status}
@@ -122,6 +165,7 @@ export default function App() {
       animateChanges={watermark !== null}
       logLines={logLines}
       summon={{ onSummon, busy: guarded.busy, notice: summonFeedback.notice, error: summonFeedback.error }}
+      sound={{ on: sound.on, busy: sound.busy, note: sound.note, available: soundEngine.available(), onToggle: onToggleSound }}
     >
       <Dashboard
         state={state}
