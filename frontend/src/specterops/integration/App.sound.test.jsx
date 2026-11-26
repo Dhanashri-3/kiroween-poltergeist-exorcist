@@ -163,7 +163,7 @@ describe('App sound: default and unlock', () => {
     expect(ctx.oscillators).toHaveLength(0); // seq 1 and 2 are history
     send(es, inject(3));
     await flush();
-    expect(freqs(ctx)).toEqual([220, 220]); // the poltergeist cue
+    expect(freqs(ctx)).toEqual([330, 330]); // the poltergeist ghost wail (two tonal voices)
     expect(openStreams()).toHaveLength(1); // audio opened no stream
   });
 
@@ -259,7 +259,7 @@ describe('App sound: unavailable, blocked and lifecycle', () => {
     expect(Fake.instances[0].state).toBe('running');
     send(es, inject(1));
     await flush();
-    expect(freqs(Fake.instances[0])).toEqual([220, 220]); // played once, not twice
+    expect(freqs(Fake.instances[0])).toEqual([330, 330]); // played once, not twice
     expect(openStreams()).toHaveLength(1);
     view.unmount();
     expect(Fake.instances[0].calls.close).toBe(1);

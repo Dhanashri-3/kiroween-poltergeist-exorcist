@@ -266,6 +266,72 @@ describe('sound engine: cues', () => {
   });
 });
 
+describe('sound engine: poltergeist ghost wail (Phase 4B.4C.4)', () => {
+  const wail = CUE_DEFINITIONS.poltergeist;
+  const tonal = wail.filter((p) => !p.noise);
+
+  it('is soft and airy: sine/triangle voices plus a looped breath, no buzzy waveforms, under one second', () => {
+    expect(tonal.map((p) => p.type)).toEqual(['sine', 'triangle']);
+    expect(wail.some((p) => p.type === 'sawtooth' || p.type === 'square')).toBe(false);
+    const breath = wail.filter((p) => p.noise);
+    expect(breath).toHaveLength(1);
+    expect(breath[0].loop).toBe(true);
+    expect(breath[0].bandpass).toBeGreaterThan(0);
+    for (const p of wail) {
+      expect(p.at + p.dur).toBeLessThan(1);
+      expect(p.attack).toBeGreaterThanOrEqual(0.25); // swells in, no click
+      expect(p.release).toBeGreaterThan(0); // fades out gradually
+    }
+    expect(wail.reduce((sum, p) => sum + p.gain, 0)).toBeLessThanOrEqual(0.54); // no louder than the old cue
+  });
+
+  it('rises, wavers and falls in pitch', () => {
+    for (const p of tonal) {
+      const points = p.glide.map(([, f]) => f);
+      const peak = Math.max(...points);
+      expect(peak).toBeGreaterThan(p.freq);
+      expect(points.at(-1)).toBeLessThan(p.freq);
+      expect(points.indexOf(peak)).toBeGreaterThan(0);
+      expect(points.indexOf(peak)).toBeLessThan(points.length - 1);
+      for (const [t] of p.glide) expect(t).toBeLessThanOrEqual(p.dur);
+    }
+  });
+
+  it('schedules the glide, the slow envelope and the looped breath', async () => {
+    const Fake = fakeAudio();
+    const engine = createSoundEngine({ AudioContextImpl: Fake, now: clock() });
+    await engine.unlock();
+    expect(engine.play('poltergeist')).toBe(true);
+    const ctx = Fake.instances[0];
+    const oscillators = ctx.sources().filter((s) => s.kind === 'oscillator');
+    const buffers = ctx.sources().filter((s) => s.kind === 'buffer');
+    expect(oscillators.map((o) => o.type)).toEqual(['sine', 'triangle']);
+    expect(buffers).toHaveLength(1);
+    expect(buffers[0].loop).toBe(true);
+    for (const o of oscillators) {
+      const ramps = o.frequency.calls.filter(([k]) => k === 'exp').map(([, f]) => f);
+      expect(ramps).toEqual([440, 415, 446, 300, 247]);
+    }
+    const envelopes = ctx.created.filter((n) => n.kind === 'gain').slice(1); // [0] is the master gain
+    const t0 = oscillators[0].started;
+    const swell = envelopes[0].gain.calls.find(([k, v]) => k === 'exp' && v === wail[0].gain);
+    expect(swell[2] - t0).toBeCloseTo(wail[0].attack, 5);
+    const hold = envelopes[0].gain.calls.find(([k, v]) => k === 'set' && v === wail[0].gain);
+    expect(hold[2] - t0).toBeCloseTo(wail[0].dur - wail[0].release, 5);
+  });
+
+  it('leaves every other cue on the original envelope and pitch path', () => {
+    for (const name of CUE_NAMES.filter((n) => n !== 'poltergeist')) {
+      for (const p of CUE_DEFINITIONS[name]) {
+        expect(p.glide, name).toBeUndefined();
+        expect(p.attack, name).toBeUndefined();
+        expect(p.release, name).toBeUndefined();
+        expect(p.loop, name).toBeUndefined();
+      }
+    }
+  });
+});
+
 describe('sound engine: mute, unmute and dispose', () => {
   it('mute() zeroes the master gain, stops active sounds and suspends', async () => {
     const Fake = fakeAudio();

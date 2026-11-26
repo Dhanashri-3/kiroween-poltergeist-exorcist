@@ -28,13 +28,19 @@ const RELEASE_PAD = 0.03;
 
 /**
  * Cue definitions. Each partial: { at, dur, gain, type, freq, to?, detune?, lowpass?, bandpass?, noise? }.
+ * Optional, used only by the Poltergeist wail (Phase 4B.4C.4): glide [[t, freq], ...] pitch points (t from the partial
+ * start), attack (fade-in seconds, default ATTACK), release (fade-out seconds before the end), loop (loop the noise).
  * Times are seconds from the cue start; gain is relative to the master gain.
  */
 export const CUE_DEFINITIONS = Object.freeze({
-  // Poltergeist injection: descending, detuned, low-passed saw pair.
+  // Poltergeist injection: a breathy "woooo" ghost wail. A soft sine swells in, rises, wavers and sinks away,
+  // doubled by a quiet detuned triangle, over a faint band-passed breath of air. No buzzy waveforms.
   poltergeist: [
-    { at: 0, dur: 0.6, gain: 0.32, type: 'sawtooth', freq: 220, to: 110, lowpass: 900 },
-    { at: 0, dur: 0.6, gain: 0.22, type: 'sawtooth', freq: 220, to: 110, detune: 14, lowpass: 900 },
+    { at: 0, dur: 0.95, gain: 0.28, type: 'sine', freq: 330, attack: 0.28, release: 0.4,
+      glide: [[0.32, 440], [0.44, 415], [0.56, 446], [0.82, 300], [0.95, 247]] },
+    { at: 0, dur: 0.95, gain: 0.12, type: 'triangle', freq: 330, detune: 9, lowpass: 900, attack: 0.3, release: 0.4,
+      glide: [[0.32, 440], [0.44, 415], [0.56, 446], [0.82, 300], [0.95, 247]] },
+    { at: 0.05, dur: 0.85, gain: 0.06, noise: true, loop: true, bandpass: 900, attack: 0.3, release: 0.35 },
   ],
   // Exorcist diagnosis: two soft scan blips.
   diagnose: [
@@ -166,11 +172,13 @@ export function createSoundEngine(options = {}) {
     if (p.noise) {
       source = ctx.createBufferSource();
       source.buffer = getNoise();
+      if (p.loop) source.loop = true;
     } else {
       source = ctx.createOscillator();
       source.type = p.type;
       source.frequency.setValueAtTime(p.freq, start);
       if (p.to) source.frequency.exponentialRampToValueAtTime(p.to, end);
+      if (Array.isArray(p.glide)) for (const [t, f] of p.glide) source.frequency.exponentialRampToValueAtTime(f, start + t);
       if (p.detune) source.detune.setValueAtTime(p.detune, start);
     }
     voice.nodes.push(source);
@@ -185,8 +193,10 @@ export function createSoundEngine(options = {}) {
       voice.nodes.push(filter);
     }
     const env = ctx.createGain();
+    const attackEnd = start + Math.min(p.attack ?? ATTACK, p.dur / 2);
     env.gain.setValueAtTime(SILENT, start);
-    env.gain.exponentialRampToValueAtTime(p.gain, start + Math.min(ATTACK, p.dur / 2));
+    env.gain.exponentialRampToValueAtTime(p.gain, attackEnd);
+    if (p.release) env.gain.setValueAtTime(p.gain, Math.max(attackEnd, end - p.release));
     env.gain.exponentialRampToValueAtTime(SILENT, end);
     head.connect(env);
     env.connect(out);
