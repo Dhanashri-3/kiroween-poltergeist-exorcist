@@ -1,0 +1,260 @@
+/*
+ * Defense Mesh (Phase 4B.3B): balanced 2x2 grid of glass health-check cards, app-level Incidents and the
+ * reaper layer. Scoped to .specterops-shell; see shell.css for the scoping rules.
+ */
+
+.specterops-shell .so-mesh {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  overflow: clip;
+  padding: clamp(3rem, 8vh, 6rem) 1.25rem clamp(3rem, 8vh, 5rem);
+  background: var(--so-bg);
+}
+.specterops-shell .so-mesh__backdrop { position: absolute; inset: 0; pointer-events: none; }
+.specterops-shell .so-mesh__crypt {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  opacity: 0.24;
+  user-select: none;
+}
+.specterops-shell .so-mesh__backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, var(--so-bg) 0%, transparent 22%, transparent 72%, var(--so-bg) 100%),
+    radial-gradient(ellipse at 50% 40%, transparent 30%, var(--so-vignette) 100%);
+}
+.specterops-shell .so-mesh {
+  /* Reaper lane size: the reaper lives here, beside the heading, never over a card. */
+  --so-lane-w: clamp(4.5rem, 12vw, 9.5rem);
+  --so-lane-h: calc(var(--so-lane-w) * 300 / 224);
+}
+.specterops-shell .so-mesh__inner { position: relative; max-width: 72rem; margin: 0 auto; }
+
+/* min-height reserves the lane's height above the grid, so the lane can never reach the cards. */
+.specterops-shell .so-mesh__head { max-width: 42rem; min-height: var(--so-lane-h); margin-bottom: 2rem; }
+@media (max-width: 959px) {
+  /* The heading spans the full width here: keep its text clear of the lane on the right. */
+  .specterops-shell .so-mesh__head { padding-right: calc(var(--so-lane-w) + 1rem); }
+}
+.specterops-shell .so-mesh__lane {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: var(--so-z-effects);
+  width: var(--so-lane-w);
+  height: var(--so-lane-h);
+  pointer-events: none;
+}
+.specterops-shell .so-mesh__eyebrow {
+  margin: 0 0 0.5rem;
+  font-family: var(--so-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--so-cyan);
+}
+.specterops-shell .so-mesh__title {
+  margin: 0;
+  font-family: var(--so-font-display);
+  font-size: clamp(1.75rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  color: transparent;
+  background: linear-gradient(90deg, var(--so-headline-from), var(--so-headline-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.specterops-shell[data-theme='light'] .so-mesh__title { background: none; color: var(--so-lilac); }
+.specterops-shell[data-theme='light'] .so-mesh__eyebrow { color: #164e63; } /* --so-cyan (#0e7490) is 3.4:1 here */
+.specterops-shell .so-mesh__lede { margin: 0.75rem 0 0; font-size: 0.95rem; line-height: 1.6; color: var(--so-ink-muted); }
+
+.specterops-shell .so-mesh__field { position: relative; }
+.specterops-shell .so-mesh__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+@media (max-width: 639px) {
+  .specterops-shell .so-mesh__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- card ------------------------------------------------------------------------------------- */
+.specterops-shell .so-card {
+  position: relative;
+  isolation: isolate; /* own stacking context: decorative layers (z 0) stay under the content (z 1) */
+  min-width: 0;
+  overflow: hidden;
+  padding: 1.25rem 1.25rem 1.1rem;
+  border: 1px solid var(--so-panel-border);
+  border-radius: var(--so-radius-card);
+  background: var(--so-panel);
+  box-shadow: var(--so-shadow-card);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: border-color 0.5s, box-shadow 0.5s, background-color 0.5s;
+}
+.specterops-shell .so-card--breached { border-color: var(--so-panel-border-hot); background: var(--so-panel-strong); box-shadow: var(--so-glow-hot); }
+.specterops-shell[data-theme='light'] .so-card--breached { border-color: #7e22ce; } /* 3:1 against the light surface */
+.specterops-shell .so-card--verified { border-color: rgba(52, 211, 153, 0.7); box-shadow: var(--so-glow-heal); }
+.specterops-shell .so-card--escalated { border-color: rgba(248, 113, 113, 0.65); }
+.specterops-shell .so-card--unavailable { border-style: dashed; }
+.specterops-shell .so-card--struck-a { animation: so-card-jitter-a 0.28s linear 6; }
+.specterops-shell .so-card--struck-b { animation: so-card-jitter-b 0.28s linear 6; }
+
+.specterops-shell .so-card__sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent 40%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.specterops-shell .so-card__body { position: relative; z-index: 1; } /* above the crack overlay (z 0) */
+.specterops-shell .so-card__top { display: flex; align-items: center; justify-content: space-between; }
+.specterops-shell .so-card__code { font-family: var(--so-font-mono); font-size: 0.75rem; letter-spacing: 0.3em; color: var(--so-ink-muted); }
+.specterops-shell .so-card__icon { color: var(--so-sky); }
+.specterops-shell .so-card--breached .so-card__icon { color: var(--so-purple-soft); }
+.specterops-shell .so-card__title {
+  margin: 0.35rem 0 0.75rem;
+  font-family: var(--so-font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.specterops-shell .so-card__badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  font-family: var(--so-font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.specterops-shell .so-card__badge[data-tone='nominal'] { color: var(--so-ink-muted); }
+.specterops-shell .so-card__badge[data-tone='nominal'] .so-dot { color: var(--so-cyan); }
+.specterops-shell .so-card__badge[data-tone='breached'] { color: var(--so-lilac); }
+.specterops-shell .so-card__badge[data-tone='breached'] .so-dot { color: var(--so-fuchsia); }
+.specterops-shell .so-card__badge[data-tone='verified'] { color: var(--so-ok); }
+.specterops-shell .so-card__badge[data-tone='escalated'] { color: var(--so-danger); }
+.specterops-shell .so-card__badge[data-tone='unknown'] { color: var(--so-warn); }
+.specterops-shell .so-card__badge[data-tone='unavailable'] { color: var(--so-ink-muted); }
+.specterops-shell .so-card__badge[data-tone='unavailable'] .so-dot { box-shadow: none; opacity: 0.6; }
+
+.specterops-shell .so-card__facts { display: grid; gap: 0.35rem; margin: 0; font-size: 0.85rem; }
+.specterops-shell .so-card__facts > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(192, 132, 252, 0.14);
+}
+/* Damaged cards: each fact row gets a translucent backing, so crack strokes stay visible but never sit
+   directly behind the label or value glyphs. */
+.specterops-shell .so-card--damaged .so-card__facts > div {
+  margin-inline: -0.4rem;
+  padding-inline: 0.4rem;
+  border-radius: 0.35rem;
+  background: rgba(10, 6, 22, 0.62);
+}
+.specterops-shell[data-theme='light'] .so-card--damaged .so-card__facts > div { background: rgba(255, 255, 255, 0.72); }
+.specterops-shell .so-card__facts dt { flex-shrink: 0; color: var(--so-ink-muted); }
+.specterops-shell .so-card__facts dd { min-width: 0; margin: 0; text-align: right; overflow-wrap: anywhere; }
+.specterops-shell .so-card code,
+.specterops-shell .so-applevel code { font-family: var(--so-font-mono); font-size: 0.8rem; }
+.specterops-shell .so-card__error { font-family: var(--so-font-mono); font-size: 0.78rem; color: var(--so-danger); }
+
+/* ---- app-level incidents ---------------------------------------------------------------------- */
+.specterops-shell .so-applevel {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--so-panel-border);
+  border-radius: var(--so-radius-card);
+  background: var(--so-panel);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.specterops-shell .so-applevel__title { margin: 0 0 0.5rem; font-family: var(--so-font-display); font-size: 1rem; letter-spacing: 0.04em; }
+.specterops-shell .so-applevel__list { display: grid; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
+.specterops-shell .so-applevel__item { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; font-size: 0.85rem; }
+.specterops-shell .so-applevel__scope { color: var(--so-ink-muted); }
+.specterops-shell .so-chip {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid currentColor;
+  border-radius: var(--so-radius-pill);
+  font-family: var(--so-font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--so-warn);
+}
+.specterops-shell[data-theme='light'] .so-chip { color: #92400e; } /* --so-warn (#b45309) is 4.2:1 here; this is above 4.5:1 */
+.specterops-shell .so-chip--recovered { color: var(--so-ok); }
+.specterops-shell .so-chip--escalated { color: var(--so-danger); }
+.specterops-shell .so-chip--none { color: var(--so-ink-muted); }
+
+/* ---- reaper and plasma beam (field coordinates, never intercept the pointer) ----------------- */
+.specterops-shell .so-reaper {
+  --so-reaper-dir: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.specterops-shell .so-reaper--flip { --so-reaper-dir: -1; }
+.specterops-shell .so-reaper__float { width: 100%; height: 100%; animation: so-reaper-float 2.6s ease-in-out infinite; }
+.specterops-shell .so-reaper__body { position: relative; width: 100%; height: 100%; }
+.specterops-shell .so-reaper--arrive .so-reaper__body { animation: so-reaper-in 0.9s var(--so-ease) both; }
+.specterops-shell .so-reaper--fire .so-reaper__body { animation: so-reaper-recoil 0.3s ease-out; }
+.specterops-shell .so-reaper__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.35));
+  user-select: none;
+}
+.specterops-shell .so-reaper--flip .so-reaper__img { transform: scaleX(-1); }
+.specterops-shell .so-reaper__charge {
+  position: absolute;
+  left: 76%;
+  top: 16%;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #ffffff 0%, rgba(233, 213, 255, 0.95) 26%, rgba(168, 85, 247, 0.6) 54%, transparent 72%);
+  animation: so-charge 0.25s ease-out both;
+}
+.specterops-shell .so-reaper--flip .so-reaper__charge { left: 24%; }
+
+.specterops-shell .so-beam {
+  position: absolute;
+  inset: 0;
+  z-index: var(--so-z-effects);
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.specterops-shell .so-beam__flicker { animation: so-flicker 0.3s steps(2) infinite; }
+.specterops-shell :is(.so-beam__halo, .so-beam__body, .so-beam__fork, .so-beam__core) {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: so-draw 0.12s ease-out both;
+}
+.specterops-shell .so-beam__halo { stroke: #a855f7; stroke-width: 12; stroke-opacity: 0.28; }
+.specterops-shell .so-beam__body { stroke: #c084fc; stroke-width: 5; stroke-opacity: 0.85; }
+.specterops-shell .so-beam__fork { stroke: #e9d5ff; stroke-width: 2; stroke-opacity: 0.7; }
+.specterops-shell .so-beam__core { stroke: #ffffff; stroke-width: 2; }

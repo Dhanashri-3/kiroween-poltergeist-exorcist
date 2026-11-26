@@ -1,0 +1,48 @@
+/*
+ * SPECTEROPS light theme (prepared, NOT active).
+ *
+ * These overrides apply only to an element that has BOTH the `.specterops-shell` class and
+ * `data-theme="light"`. Nothing sets that attribute yet, so the light theme is inert and the
+ * application stays dark. A later phase decides how and when to turn it on.
+ *
+ * Only custom properties are overridden, and all of them sit under `.specterops-shell`.
+ * Values are taken from Aathavan's light palette in web-ui/app/page.tsx.
+ */
+.specterops-shell[data-theme='light'] {
+  /* Surfaces */
+  --so-bg: #d8c8f2;
+  --so-bg-glow-a: rgba(168, 85, 247, 0.18);
+  --so-bg-glow-b: rgba(56, 189, 248, 0.16);
+  --so-bg-center: #eae2f8;
+  --so-panel: rgba(255, 255, 255, 0.65);
+  --so-panel-strong: rgba(255, 255, 255, 0.75);
+  --so-panel-border: rgba(168, 85, 247, 0.4);
+  --so-panel-border-hot: rgba(168, 85, 247, 0.9);
+  --so-vignette: rgba(4, 3, 10, 0);
+
+  /* Text */
+  --so-ink: #1a0b2e;
+  --so-ink-muted: #3b2a63;
+
+  /* Accents (deeper for contrast on light surfaces) */
+  --so-purple: #7e22ce;
+  --so-purple-soft: #9333ea;
+  --so-lilac: #581c87;
+  --so-cyan: #0e7490;
+  --so-sky: #0ea5e9;
+  --so-fuchsia: #a21caf;
+  --so-ok: #047857;
+  --so-warn: #b45309;
+  --so-danger: #b91c1c;
+
+  /* Gradients */
+  --so-wordmark-from: #7e22ce;
+  --so-wordmark-to: #0ea5e9;
+  --so-headline-from: #d8b4fe;
+  --so-headline-to: #7dd3fc;
+
+  /* Shadows and glows */
+  --so-shadow-card: 0 8px 32px rgba(109, 40, 217, 0.18);
+  --so-glow-hot: 0 0 30px rgba(168, 85, 247, 0.5);
+  --so-glow-heal: 0 0 30px rgba(16, 185, 129, 0.4);
+}

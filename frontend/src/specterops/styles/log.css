@@ -1,0 +1,117 @@
+/*
+ * Agent activity pill (Phase 4B.3B, refined in 4B.3C.1). Docked bottom-centre at 480 px and wider; below
+ * 480 px the collapsed pill is a compact 44 px icon button docked bottom-right. The dock ignores the pointer;
+ * only the pill takes clicks, and .so-dashboard-frame reserves bottom padding so the pill never covers
+ * Dashboard controls at the end of the page. Scoped to .specterops-shell; see shell.css.
+ */
+
+.specterops-shell .so-logdock {
+  position: fixed;
+  inset-inline: 0;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: var(--so-z-log);
+  display: flex;
+  justify-content: center;
+  padding: 0 max(1rem, env(safe-area-inset-right)) 0 max(1rem, env(safe-area-inset-left));
+  pointer-events: none;
+}
+.specterops-shell .so-log {
+  box-sizing: border-box; /* widths below include padding and border, so calc() widths fit the viewport */
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  width: 100%;
+  min-width: 0; /* a flex item defaults to its min-content width; long log lines must not widen the pill */
+  max-width: 38rem;
+  padding: 0.35rem 0.4rem 0.35rem 0.9rem;
+  border: 1px solid var(--so-panel-border);
+  border-radius: 1.25rem;
+  background: var(--so-panel-strong);
+  box-shadow: var(--so-shadow-card);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  pointer-events: auto;
+}
+.specterops-shell .so-log__icon { margin-top: 0.55rem; color: var(--so-ink-muted); }
+.specterops-shell .so-log__list {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0.4rem 0;
+  list-style: none;
+  font-family: var(--so-font-mono);
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+.specterops-shell .so-log--open .so-log__list { max-height: min(40vh, 12rem); overflow-y: auto; }
+.specterops-shell .so-log__line { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.specterops-shell .so-log--open .so-log__line { white-space: normal; overflow-wrap: anywhere; }
+.specterops-shell .so-log__line--live { animation: so-log-in 0.25s ease-out both; }
+.specterops-shell .so-log__empty { color: var(--so-ink-muted); }
+.specterops-shell .so-log__tag { font-weight: 700; }
+.specterops-shell .so-log__tag--poltergeist { color: #f0abfc; }
+.specterops-shell .so-log__tag--exorcist { color: #6ee7b7; }
+.specterops-shell .so-log__tag--system { color: var(--so-ink-muted); }
+/* Light theme: a near-opaque pill, so the dark hero art behind it cannot drag the tag colours below AA. */
+.specterops-shell[data-theme='light'] .so-log { background: rgba(255, 255, 255, 0.94); }
+.specterops-shell[data-theme='light'] .so-log__tag--poltergeist { color: #a21caf; }
+.specterops-shell[data-theme='light'] .so-log__tag--exorcist { color: #047857; }
+.specterops-shell .so-log__toggle { position: relative; width: 2rem; height: 2rem; }
+
+/* Compact-only parts are hidden in the full pill. */
+.specterops-shell .so-log__compact-icon,
+.specterops-shell .so-log__pip { display: none; }
+
+/* ---- below 480 px: compact icon button, bottom-right ------------------------------------------- */
+@media (max-width: 479px) {
+  .specterops-shell .so-logdock {
+    left: auto;
+    right: max(0.75rem, env(safe-area-inset-right));
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    justify-content: flex-end;
+    padding: 0;
+  }
+  .specterops-shell .so-log__icon { display: none; }
+
+  /* Collapsed: only the 44 px toggle is visible. The log stays in the accessibility tree (still announced). */
+  .specterops-shell .so-log:not(.so-log--open) {
+    width: auto;
+    padding: 0;
+    border-radius: 50%;
+  }
+  .specterops-shell .so-log:not(.so-log--open) .so-log__list {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .specterops-shell .so-log:not(.so-log--open) .so-log__toggle { width: 2.75rem; height: 2.75rem; border: 0; background: transparent; }
+  .specterops-shell .so-log:not(.so-log--open) .so-log__chevron { display: none; }
+  .specterops-shell .so-log:not(.so-log--open) .so-log__compact-icon { display: block; }
+  .specterops-shell .so-log:not(.so-log--open) .so-log__pip {
+    display: block;
+    position: absolute;
+    top: 0.45rem;
+    right: 0.45rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--so-ink-muted);
+    box-shadow: 0 0 0 2px var(--so-panel-strong);
+  }
+  .specterops-shell .so-log__pip[data-actor='POLTERGEIST'] { background: #f0abfc; }
+  .specterops-shell .so-log__pip[data-actor='EXORCIST'] { background: #6ee7b7; }
+  .specterops-shell .so-log__pip[data-source='client'] { background: var(--so-warn); }
+
+  /* Expanded: full history inside the viewport margins, never wider than the screen. */
+  .specterops-shell .so-log--open {
+    width: calc(100vw - 1.5rem - env(safe-area-inset-left) - env(safe-area-inset-right));
+    max-width: none;
+    padding: 0.35rem 0.35rem 0.35rem 0.75rem;
+  }
+}

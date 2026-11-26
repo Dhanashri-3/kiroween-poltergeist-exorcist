@@ -1,0 +1,247 @@
+/*
+ * SPECTEROPS shell: root, navigation, controls, focus, Dashboard frame and reduced motion (Phase 4B.3B).
+ *
+ * Scoping rules for every SPECTEROPS stylesheet:
+ *  - every selector starts with `.specterops-shell` and targets `.so-*` classes;
+ *  - inherited properties (font, colour, letter-spacing) are set on shell regions only, never on the root,
+ *    so nothing cascades into the Dashboard rendered inside #so-dashboard;
+ *  - no selector can match an element inside .so-dashboard-frame.
+ */
+
+.specterops-shell {
+  position: relative;
+  isolation: isolate;
+  background: var(--so-bg);
+  transition: background-color var(--so-duration-theme) var(--so-ease);
+}
+
+.specterops-shell .so-stage,
+.specterops-shell .so-mesh,
+.specterops-shell .so-logdock,
+.specterops-shell .so-skip {
+  font-family: var(--so-font-body);
+  color: var(--so-ink);
+  letter-spacing: 0.01em;
+}
+
+.specterops-shell .so-muted { color: var(--so-ink-muted); }
+
+/* ---- skip link ---------------------------------------------------------------------------- */
+.specterops-shell .so-skip {
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 60;
+  padding: 0.6rem 1rem;
+  border-radius: var(--so-radius-pill);
+  border: 1px solid var(--so-panel-border-hot);
+  background: var(--so-panel-strong);
+  text-decoration: none;
+  transform: translateY(calc(-100% - 1.5rem));
+}
+.specterops-shell .so-skip:focus { transform: none; }
+
+/* ---- focus -------------------------------------------------------------------------------- */
+/* Two-tone focus ring: the halo fills the 3 px offset gap, so the ring always sits against a contrasting
+   colour whatever the surface behind the control (art, glass, gradient button or light nav). */
+.specterops-shell { --so-focus-ring: #22d3ee; --so-focus-halo: #050714; }
+.specterops-shell[data-theme='light'] { --so-focus-ring: #3b0764; --so-focus-halo: #ffffff; }
+.specterops-shell :is(.so-skip, .so-nav__brand, .so-nav__link, .so-iconbtn, .so-summon__btn, .so-hero__cta, .so-log__list):focus-visible {
+  outline: 2px solid var(--so-focus-ring);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--so-focus-halo);
+}
+/* The Dashboard wrapper is only a programmatic focus target for the skip link. */
+.specterops-shell .so-dashboard-frame:focus { outline: none; }
+
+/* ---- navigation (sticky inside the hero only, so it never covers the Dashboard) ------------ */
+.specterops-shell .so-nav {
+  position: sticky;
+  top: 0.75rem;
+  z-index: var(--so-z-nav);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: fit-content;
+  max-width: calc(100% - 1.5rem);
+  margin: 0.75rem auto 0;
+  padding: 0.4rem;
+  border: 1px solid var(--so-panel-border);
+  border-radius: 1.5rem;
+  background: var(--so-panel);
+  box-shadow: var(--so-shadow-card);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.specterops-shell .so-nav__brand {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--so-radius-pill);
+  font-family: var(--so-font-wordmark);
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  color: var(--so-ink);
+  text-decoration: none;
+}
+.specterops-shell .so-nav__links {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.specterops-shell .so-nav__link {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--so-radius-pill);
+  font-size: 0.875rem;
+  color: var(--so-ink);
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.specterops-shell .so-nav__link:hover { background: var(--so-bg-glow-a); }
+
+.specterops-shell .so-nav__stream {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--so-panel-border);
+  border-radius: var(--so-radius-pill);
+  font-family: var(--so-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--so-ink-muted);
+}
+.specterops-shell .so-nav__stream--connected .so-dot { color: var(--so-ok); }
+.specterops-shell .so-nav__stream--connecting .so-dot { color: var(--so-warn); }
+.specterops-shell .so-nav__stream--disconnected .so-dot,
+.specterops-shell .so-nav__stream--closed .so-dot { color: var(--so-danger); }
+
+.specterops-shell .so-dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* ---- icon buttons and icons ---------------------------------------------------------------- */
+.specterops-shell .so-icon { flex-shrink: 0; width: 1.1rem; height: 1.1rem; }
+.specterops-shell .so-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--so-panel-border);
+  border-radius: 50%;
+  background: var(--so-panel);
+  color: var(--so-ink);
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.specterops-shell .so-iconbtn:hover { border-color: var(--so-panel-border-hot); }
+.specterops-shell .so-theme-toggle[aria-pressed='true'] { border-color: var(--so-panel-border-hot); }
+
+/* ---- summon control ------------------------------------------------------------------------ */
+.specterops-shell .so-summon { position: relative; display: flex; flex-direction: column; align-items: flex-end; }
+.specterops-shell .so-summon__btn {
+  padding: 0.6rem 1.25rem;
+  border: 0;
+  border-radius: var(--so-radius-pill);
+  background: linear-gradient(90deg, #7e22ce, #a21caf 55%, #0369a1);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
+  font: inherit;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s var(--so-ease), box-shadow 0.2s;
+}
+.specterops-shell .so-summon__btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 0 28px rgba(56, 189, 248, 0.55);
+}
+.specterops-shell .so-summon__btn:disabled { cursor: not-allowed; opacity: 0.65; }
+.specterops-shell .so-summon__btn[aria-busy='true'] { cursor: progress; }
+.specterops-shell .so-summon__feedback {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: max-content;
+  max-width: min(22rem, 80vw);
+}
+.specterops-shell .so-summon__notice,
+.specterops-shell .so-summon__error {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--so-panel-border);
+  border-radius: 0.75rem;
+  background: var(--so-panel-strong);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--so-ink);
+}
+.specterops-shell .so-summon__error { border-color: var(--so-danger); }
+
+/* ---- Dashboard frame: keeps the Dashboard's own dark background in both themes -------------- */
+.specterops-shell .so-dashboard-frame {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(192, 132, 252, 0.18);
+  background: #0a0814; /* the Dashboard's --bg from dashboard.css */
+  padding-bottom: 6.5rem; /* room for the agent log dock, so it never covers Dashboard controls */
+}
+
+/* ---- responsive navigation ------------------------------------------------------------------ */
+@media (max-width: 899px) {
+  .specterops-shell .so-nav__brand { display: none; }
+}
+@media (max-width: 719px) {
+  .specterops-shell .so-nav__links { display: none; }
+  .specterops-shell .so-summon__btn { padding: 0.55rem 1rem; }
+}
+
+/* ---- reduced motion --------------------------------------------------------------------------
+ * The shell sets data-motion="reduced" from useReducedMotion(); the media query covers the same case
+ * without JavaScript. Every animated or transitioned shell element is listed explicitly (no universal
+ * selector, so nothing reaches the Dashboard). Each effect's resting state is its final frame.
+ */
+.specterops-shell[data-motion='reduced'] :is(.so-clouds__band, .so-glitch, .so-crack__lines, .so-crack__glow,
+  .so-crack__core, .so-slash__flash, .so-slash__bolt, .so-slash__core, .so-heal, .so-beam__flicker, .so-beam__halo,
+  .so-beam__body, .so-beam__fork, .so-beam__core, .so-reaper__float, .so-reaper__body, .so-reaper__charge,
+  .so-log__line--live, .so-skullhand__aura, .so-skullhand__skull-lit, .so-card) {
+  animation: none !important;
+}
+.specterops-shell[data-motion='reduced'],
+.specterops-shell[data-motion='reduced'] :is(.so-skullhand__hand-img, .so-skullhand__skull, .so-skullhand__skull-lit,
+  .so-skullhand__aura, .so-skullhand__shadow, .so-moon__anchor, .so-wordmark, .so-wordmark__text, .so-card,
+  .so-summon__btn, .so-nav__link, .so-iconbtn, .so-hero__cta) {
+  transition: none !important;
+}
+.specterops-shell[data-motion='reduced'] :is(.so-moon__anchor, .so-wordmark__text) { transform: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .specterops-shell :is(.so-clouds__band, .so-glitch, .so-crack__lines, .so-crack__glow, .so-crack__core,
+    .so-slash__flash, .so-slash__bolt, .so-slash__core, .so-heal, .so-beam__flicker, .so-beam__halo, .so-beam__body,
+    .so-beam__fork, .so-beam__core, .so-reaper__float, .so-reaper__body, .so-reaper__charge, .so-log__line--live,
+    .so-skullhand__aura, .so-skullhand__skull-lit, .so-card) {
+    animation: none !important;
+  }
+  .specterops-shell,
+  .specterops-shell :is(.so-skullhand__hand-img, .so-skullhand__skull, .so-skullhand__skull-lit, .so-skullhand__aura,
+    .so-skullhand__shadow, .so-moon__anchor, .so-wordmark, .so-wordmark__text, .so-card, .so-summon__btn,
+    .so-nav__link, .so-iconbtn, .so-hero__cta) {
+    transition: none !important;
+  }
+  .specterops-shell :is(.so-moon__anchor, .so-wordmark__text) { transform: none !important; }
+}

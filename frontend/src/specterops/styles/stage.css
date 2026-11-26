@@ -1,0 +1,357 @@
+/*
+ * Haunted hero stage (Phase 4B.3B). Ported from web-ui/app/page.tsx: obsidian backdrop, SPECTEROPS
+ * wordmark (z-0), glass half-moon (z-10), drifting clouds (z-15), graveyard horizon (z-20), vignette (z-25),
+ * skull and hand (z-30) and the hero copy (z-40). Scoped to .specterops-shell; see shell.css.
+ *
+ * Motion inputs are CSS custom properties written by the existing hooks:
+ *   --specterops-scroll      document scroll progress 0..1 (useScrollProgress), used for the wordmark fade only
+ *   --specterops-pointer-x/y pointer position -0.5..0.5 (usePointerParallax); 0 under reduced motion
+ */
+
+.specterops-shell {
+  --so-moon-rgb: 86, 76, 140;
+  --so-moon-hi: rgba(246, 244, 255, 0.95);
+  --so-moon-mid: rgba(206, 198, 242, 0.85);
+  --so-moon-lo: rgba(150, 138, 205, 0.75);
+  --so-moon-edge: rgba(104, 92, 168, 0.65);
+  --so-moon-halo-a: rgba(167, 139, 250, 0.34);
+  --so-moon-halo-b: rgba(103, 232, 249, 0.1);
+  --so-cloud-cool: 196, 181, 253;
+  --so-cloud-icy: 147, 197, 253;
+  --so-graveyard-opacity: 1;
+}
+.specterops-shell[data-theme='light'] {
+  --so-moon-rgb: 110, 90, 170;
+  --so-moon-hi: rgba(255, 255, 255, 0.95);
+  --so-moon-mid: rgba(226, 218, 250, 0.85);
+  --so-moon-lo: rgba(180, 164, 232, 0.75);
+  --so-moon-edge: rgba(140, 122, 208, 0.65);
+  --so-moon-halo-a: rgba(139, 92, 246, 0.3);
+  --so-moon-halo-b: rgba(56, 189, 248, 0.12);
+  --so-cloud-cool: 139, 92, 246;
+  --so-cloud-icy: 99, 102, 241;
+  --so-graveyard-opacity: 0.85;
+}
+
+.specterops-shell .so-stage {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden; /* fallback; `clip` keeps the sticky nav working where supported */
+  overflow: clip;
+}
+.specterops-shell .so-stage__art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.specterops-shell .so-stage__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: var(--so-z-backdrop);
+  background:
+    radial-gradient(circle at 12% 12%, var(--so-bg-glow-a) 0%, transparent 38%),
+    radial-gradient(circle at 92% 92%, var(--so-bg-glow-b) 0%, transparent 36%),
+    radial-gradient(ellipse at 50% 35%, var(--so-bg-center) 0%, var(--so-bg) 70%);
+}
+
+/* ---- wordmark: behind the moon; fades and rises as the document scrolls ---------------------- */
+.specterops-shell .so-wordmark {
+  position: absolute;
+  inset-inline: 0;
+  top: 13vh;
+  z-index: var(--so-z-backdrop);
+  display: flex;
+  justify-content: center;
+  opacity: max(0, calc(0.45 - var(--specterops-scroll) * 3));
+  transform: translateY(calc(var(--specterops-scroll) * -240px));
+}
+.specterops-shell .so-wordmark__text {
+  display: inline-block;
+  font-family: var(--so-font-wordmark);
+  font-size: min(17vw, 22rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: transparent;
+  background: linear-gradient(to bottom, var(--so-wordmark-from), var(--so-wordmark-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  transform: translate(calc(var(--specterops-pointer-x) * 32px), calc(var(--specterops-pointer-y) * 16px));
+}
+
+/* ---- glass half-moon ------------------------------------------------------------------------- */
+.specterops-shell .so-moon { position: absolute; inset: 0; z-index: var(--so-z-moon); }
+.specterops-shell .so-moon__anchor {
+  position: absolute;
+  left: 50%;
+  bottom: 16vh;
+  width: 0;
+  height: 0;
+  transform: translateX(calc(var(--specterops-pointer-x) * -24px));
+}
+.specterops-shell .so-moon__halo,
+.specterops-shell .so-moon__body,
+.specterops-shell .so-moon__rim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+}
+.specterops-shell .so-moon__halo {
+  width: min(170vw, 1800px);
+  background: radial-gradient(circle, var(--so-moon-halo-a) 0%, var(--so-moon-halo-b) 36%, transparent 62%);
+}
+.specterops-shell .so-moon__body {
+  width: min(78vw, 880px);
+  border-radius: 50%;
+  opacity: 0.5;
+  box-shadow: inset -30px -24px 80px rgba(60, 40, 120, 0.25), 0 0 70px rgba(167, 139, 250, 0.35);
+  background:
+    radial-gradient(ellipse 5% 5% at 34% 24%, rgba(var(--so-moon-rgb), 0.22) 0%, rgba(var(--so-moon-rgb), 0.13) 65%, transparent 100%),
+    radial-gradient(ellipse 7% 7% at 62% 18%, rgba(var(--so-moon-rgb), 0.18) 0%, rgba(var(--so-moon-rgb), 0.11) 65%, transparent 100%),
+    radial-gradient(ellipse 4% 4% at 48% 38%, rgba(var(--so-moon-rgb), 0.18) 0%, rgba(var(--so-moon-rgb), 0.11) 65%, transparent 100%),
+    radial-gradient(ellipse 6% 6% at 22% 40%, rgba(var(--so-moon-rgb), 0.2) 0%, rgba(var(--so-moon-rgb), 0.12) 65%, transparent 100%),
+    radial-gradient(ellipse 5% 5% at 76% 36%, rgba(var(--so-moon-rgb), 0.16) 0%, rgba(var(--so-moon-rgb), 0.1) 65%, transparent 100%),
+    radial-gradient(ellipse 3% 3% at 52% 10%, rgba(var(--so-moon-rgb), 0.18) 0%, rgba(var(--so-moon-rgb), 0.11) 65%, transparent 100%),
+    radial-gradient(ellipse 20% 12% at 36% 17%, rgba(var(--so-moon-rgb), 0.2) 0%, transparent 100%),
+    radial-gradient(ellipse 14% 10% at 64% 30%, rgba(var(--so-moon-rgb), 0.18) 0%, transparent 100%),
+    radial-gradient(ellipse 12% 16% at 26% 33%, rgba(var(--so-moon-rgb), 0.16) 0%, transparent 100%),
+    radial-gradient(circle at 38% 30%, var(--so-moon-hi) 0%, var(--so-moon-mid) 38%, var(--so-moon-lo) 72%, var(--so-moon-edge) 100%);
+}
+.specterops-shell .so-moon__rim {
+  width: min(78vw, 880px);
+  border-radius: 50%;
+  opacity: 0.8;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    inset 0 0 40px rgba(224, 214, 255, 0.5),
+    inset 16px 16px 50px rgba(255, 255, 255, 0.18);
+}
+
+/* ---- clouds ----------------------------------------------------------------------------------- */
+.specterops-shell .so-clouds { position: absolute; inset: 0; z-index: var(--so-z-clouds); overflow: hidden; }
+.specterops-shell .so-clouds__band {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  background-size: 50% 100%;
+  background-repeat: repeat-x;
+  will-change: transform;
+  animation: so-cloud-drift 140s linear infinite;
+}
+.specterops-shell .so-clouds__band--far,
+.specterops-shell .so-clouds__band--near {
+  background-image:
+    radial-gradient(ellipse 14% 34% at 10% 55%, rgba(var(--so-cloud-cool), 0.9) 0%, transparent 100%),
+    radial-gradient(ellipse 20% 42% at 28% 45%, rgba(var(--so-cloud-cool), 0.9) 0%, transparent 100%),
+    radial-gradient(ellipse 12% 30% at 46% 62%, rgba(var(--so-cloud-cool), 0.9) 0%, transparent 100%),
+    radial-gradient(ellipse 22% 46% at 66% 42%, rgba(var(--so-cloud-cool), 0.9) 0%, transparent 100%),
+    radial-gradient(ellipse 16% 34% at 88% 56%, rgba(var(--so-cloud-cool), 0.9) 0%, transparent 100%);
+}
+.specterops-shell .so-clouds__band--mid {
+  background-image:
+    radial-gradient(ellipse 14% 34% at 10% 55%, rgba(var(--so-cloud-icy), 0.9) 0%, transparent 100%),
+    radial-gradient(ellipse 20% 42% at 28% 45%, rgba(var(--so-cloud-icy), 0.9) 0%, transparent 100%),
+    radial-gradient(ellipse 12% 30% at 46% 62%, rgba(var(--so-cloud-icy), 0.9) 0%, transparent 100%),
+    radial-gradient(ellipse 22% 46% at 66% 42%, rgba(var(--so-cloud-icy), 0.9) 0%, transparent 100%),
+    radial-gradient(ellipse 16% 34% at 88% 56%, rgba(var(--so-cloud-icy), 0.9) 0%, transparent 100%);
+}
+.specterops-shell .so-clouds__band--far { top: 6vh; height: 28vh; opacity: 0.35; animation-duration: 140s; }
+.specterops-shell .so-clouds__band--mid { top: 24vh; height: 28vh; opacity: 0.4; animation-duration: 100s; }
+.specterops-shell .so-clouds__band--near { top: 42vh; height: 26vh; opacity: 0.45; animation-duration: 70s; }
+
+/* ---- graveyard horizon (top half of the two-height art) --------------------------------------- */
+.specterops-shell .so-graveyard {
+  position: absolute;
+  inset: 0;
+  z-index: var(--so-z-graveyard);
+  opacity: var(--so-graveyard-opacity);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 36%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 36%, #000 100%);
+}
+.specterops-shell .so-graveyard__img {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: auto;
+  min-width: 100%;
+  max-width: none;
+  height: 200%;
+  object-fit: cover;
+  object-position: center top;
+  transform: translateX(-50%);
+  user-select: none;
+}
+
+/* Obsidian corners in dark mode, plus a fade into the Defense Mesh below. */
+.specterops-shell .so-stage__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: var(--so-z-vignette);
+  background:
+    linear-gradient(to bottom, transparent 78%, var(--so-bg) 100%),
+    radial-gradient(circle at 50% 45%, transparent 38%, var(--so-vignette) 100%);
+}
+
+/* ---- content: skull and hero copy ------------------------------------------------------------- */
+.specterops-shell .so-stage__content {
+  position: relative;
+  z-index: var(--so-z-content);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  padding: 2rem 1.25rem 2.5rem;
+  pointer-events: none;
+}
+.specterops-shell .so-hero {
+  align-self: stretch;
+  max-width: 30rem;
+  pointer-events: auto;
+}
+.specterops-shell[data-theme='light'] .so-hero {
+  padding: 1rem 1.25rem;
+  border-radius: var(--so-radius-card);
+  background: rgba(26, 11, 46, 0.6); /* keeps the white on-art copy readable over light art */
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.specterops-shell .so-hero__title {
+  margin: 0;
+  font-family: var(--so-font-display);
+  font-size: clamp(1.75rem, 3.6vw, 3.75rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--so-ink-on-art);
+}
+.specterops-shell .so-hero__line { display: block; text-shadow: 0 2px 14px var(--so-ink-on-art-shadow); }
+.specterops-shell .so-hero__line--accent {
+  color: transparent;
+  background: linear-gradient(90deg, #d8b4fe, #7dd3fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: none;
+}
+.specterops-shell .so-hero__lede { display: flex; align-items: flex-start; gap: 0.75rem; max-width: 24rem; margin-top: 1rem; }
+.specterops-shell .so-bat { flex-shrink: 0; width: 2.5rem; height: 1.5rem; margin-top: 0.1rem; color: #c4b5fd; }
+.specterops-shell .so-hero__text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(243, 232, 255, 0.94);
+  text-shadow: 0 1px 10px rgba(12, 4, 28, 0.7);
+}
+.specterops-shell .so-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.25rem;
+  border: 1px solid rgba(192, 132, 252, 0.5);
+  border-radius: var(--so-radius-pill);
+  background: rgba(88, 28, 135, 0.45);
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.35);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  font-size: 0.875rem;
+  color: #faf5ff;
+  text-decoration: none;
+  transition: box-shadow 0.3s, transform 0.3s var(--so-ease);
+}
+.specterops-shell .so-hero__cta:hover { transform: translateY(-1px); box-shadow: 0 0 34px rgba(56, 189, 248, 0.5); }
+
+@media (min-width: 1200px) {
+  .specterops-shell .so-stage__content { padding: 2rem 3rem 8vh; }
+  .specterops-shell .so-hero { position: absolute; left: 3rem; bottom: 8vh; max-width: 26rem; }
+}
+
+/* ---- skull and skeletal hand ------------------------------------------------------------------ */
+.specterops-shell .so-skullhand {
+  position: relative;
+  width: min(62vw, 360px, 44vh);
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+.specterops-shell .so-skullhand__hand {
+  position: absolute;
+  left: 50%;
+  top: -4%;
+  width: 200%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.specterops-shell .so-skullhand__hand-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform-origin: 50% 46%;
+  transform: translate(5.5%, 70%) scale(0.72);
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  transition: transform 1.4s var(--so-ease), opacity 0.8s;
+  user-select: none;
+}
+.specterops-shell .so-skullhand__shadow {
+  position: absolute;
+  left: 50%;
+  top: 48.5%;
+  width: 22%;
+  height: 8%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(4, 2, 12, 1) 0%, rgba(4, 2, 12, 0.6) 42%, transparent 72%);
+  transition: opacity 0.8s 0.6s;
+}
+.specterops-shell .so-skullhand__skull {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto; /* hover ignites the fire eyes */
+  transition: transform 1.2s var(--so-ease);
+}
+.specterops-shell .so-skullhand__skull-img,
+.specterops-shell .so-skullhand__skull-lit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+.specterops-shell .so-skullhand__skull-lit { opacity: 0; transition: opacity 0.6s; }
+.specterops-shell .so-skullhand__aura {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  width: 130%;
+  height: 130%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(56, 189, 248, 0.16) 34%, transparent 62%);
+  transition: opacity 0.6s;
+}
+.specterops-shell .so-skullhand--caught .so-skullhand__hand-img { opacity: 1; transform: translate(5.5%, 0) scale(0.72); }
+.specterops-shell .so-skullhand--caught .so-skullhand__shadow { opacity: 0.75; }
+.specterops-shell .so-skullhand--caught .so-skullhand__skull { transform: translateY(-4%); }
+.specterops-shell .so-skullhand__skull:hover .so-skullhand__skull-lit,
+.specterops-shell .so-skullhand--caught .so-skullhand__skull-lit {
+  opacity: 1;
+  animation: so-skull-flicker 1.8s ease-in-out infinite alternate;
+}
+.specterops-shell .so-skullhand__skull:hover .so-skullhand__aura,
+.specterops-shell .so-skullhand--caught .so-skullhand__aura {
+  opacity: 1;
+  animation: so-aura-breathe 3.2s ease-in-out infinite;
+}

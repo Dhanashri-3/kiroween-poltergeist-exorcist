@@ -1,0 +1,89 @@
+/*
+ * SPECTEROPS design tokens (Phase 4B.1 foundation).
+ *
+ * Every custom property is declared on `.specterops-shell`, so nothing here can reach
+ * the existing Dashboard unless an element sits inside a `.specterops-shell` wrapper.
+ * The file is not imported anywhere yet; it has no effect until a later phase uses it.
+ *
+ * Dark is the default theme. Light-theme values live in theme-light.css and apply
+ * only to `.specterops-shell[data-theme='light']`.
+ *
+ * Values are taken from Aathavan's web-ui/app/page.tsx palette (purple / cyan / obsidian).
+ * Fonts are system fallbacks only. No font files are loaded.
+ */
+.specterops-shell {
+  /* Surfaces */
+  --so-bg: #050714;
+  --so-bg-glow-a: rgba(126, 34, 206, 0.38);
+  --so-bg-glow-b: rgba(14, 165, 233, 0.26);
+  --so-bg-center: #1b1040;
+  --so-panel: rgba(18, 11, 36, 0.45);
+  --so-panel-strong: rgba(18, 11, 36, 0.6);
+  --so-panel-border: rgba(192, 132, 252, 0.25);
+  --so-panel-border-hot: rgba(192, 132, 252, 0.9);
+  --so-vignette: rgba(4, 3, 10, 0.78);
+
+  /* Text */
+  --so-ink: #faf5ff;
+  --so-ink-muted: rgba(233, 213, 255, 0.6);
+  --so-ink-on-art: #ffffff;
+  --so-ink-on-art-shadow: rgba(12, 4, 28, 0.55);
+
+  /* Accents */
+  --so-purple: #a855f7;
+  --so-purple-soft: #c084fc;
+  --so-lilac: #e9d5ff;
+  --so-cyan: #22d3ee;
+  --so-sky: #38bdf8;
+  --so-fuchsia: #c026d3;
+  --so-ok: #34d399;
+  --so-warn: #fbbf24;
+  --so-danger: #f87171;
+
+  /* Gradients */
+  --so-wordmark-from: #ffffff;
+  --so-wordmark-to: #c084fc;
+  --so-headline-from: #d8b4fe;
+  --so-headline-to: #7dd3fc;
+
+  /* Shadows and glows */
+  --so-shadow-card: 0 8px 32px rgba(56, 189, 248, 0.12);
+  --so-glow-hot: 0 0 30px rgba(168, 85, 247, 0.5);
+  --so-glow-heal: 0 0 30px rgba(52, 211, 153, 0.45);
+
+  /* Typography: system fallbacks only (no downloads, no @font-face) */
+  --so-font-display: Cinzel, 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --so-font-wordmark: Anton, Impact, 'Arial Narrow Bold', 'Haettenschweiler', sans-serif;
+  --so-font-body: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --so-font-mono: 'Geist Mono', ui-monospace, Menlo, Consolas, 'Courier New', monospace;
+
+  /* Shape and motion */
+  --so-radius-card: 1rem;
+  --so-radius-pill: 999px;
+  --so-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --so-duration-theme: 700ms;
+
+  /* Layering (matches the z-order planned from web-ui) */
+  --so-z-backdrop: 0;
+  --so-z-moon: 10;
+  --so-z-clouds: 15;
+  --so-z-graveyard: 20;
+  --so-z-vignette: 25;
+  --so-z-scene: 30;
+  --so-z-content: 40;
+  --so-z-effects: 50;
+  --so-z-log: 44;
+  --so-z-nav: 45;
+
+  /* Hook-driven values. Defaults mean "no motion"; the hooks overwrite them on the shell element. */
+  --specterops-scroll: 0;
+  --specterops-pointer-x: 0;
+  --specterops-pointer-y: 0;
+}
+
+/* Reduced motion: shared switch for later phases. Tokens only, no layout or visual change. */
+@media (prefers-reduced-motion: reduce) {
+  .specterops-shell {
+    --so-duration-theme: 0ms;
+  }
+}
